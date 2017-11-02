@@ -2,7 +2,12 @@
 body {
   font: 1rem 'Montserrat', sans-serif;
   margin-top: 50px;
-  padding-top: 1em; }
+  padding-top: 1em;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  height: 100%; }
   body > .main-content {
     min-height: 400px; }
 
@@ -134,3 +139,385 @@ a:hover {
     color: #bbb; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+
+@media (max-width: 1023px) {
+  body {
+    padding-top: 56px;
+  }
+  .button{
+    width:40%;
+
+  }
+
+  #myFooter .container .row  {
+display:none;
+overflow: hidden; text-overflow: ellipsis;
+
+  }
+
+  #myFooter .second-bar {
+  display:none;
+  overflow: hidden; text-overflow: ellipsis;
+
+  }
+
+  #myFooter .third-bar .container .logo{
+  display:none;
+  overflow: hidden; text-overflow: ellipsis;
+
+  }
+}
+
+@media (min-width: 300px) {
+  .button .btn btn-lg btn-secondary btn-block{
+    width:30%;
+
+  }
+
+  .btn-group-lg>.btn, .btn-lg{
+    font-size: 0.8em;
+    text-align: center;
+  }
+}
+
+
+
+@media (max-width: 570px) {
+.carousel.slide{
+  display:none;
+}
+
+    #myFooter .container .row  {
+  display:none;
+  overflow: hidden; text-overflow: ellipsis;
+
+    }
+    #myFooter .second-bar {
+    display:none;
+    overflow: hidden; text-overflow: ellipsis;
+
+    }
+
+    #myFooter .third-bar .container .logo{
+    display:none;
+    overflow: hidden; text-overflow: ellipsis;
+
+    }
+
+    .button .btn.btn-lg.btn-secondary.btn-block{
+      width:10%;
+
+    }
+    .btn-group-lg>.btn, .btn-lg{
+      font-size: 0.8em;
+      text-align: center;
+    }
+
+
+  }
+
+.carousel-item {
+  height: 25em;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+
+img{
+  width : 100%;
+  height: 100%;
+}
+
+.navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top{
+  background-color: white;
+
+}
+
+
+
+
+#myFooter {
+    background-color: #22222F;
+    color: white;
+}
+
+#myFooter .row {
+    margin-bottom: 60px;
+}
+
+#myFooter .info{
+    text-align: justify;
+    color: #22222F;
+}
+
+#myFooter ul {
+    list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+}
+
+#myFooter h5 {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#myFooter .logo{
+    margin-top: 10px;
+}
+
+#myFooter .second-bar .logo a{
+    color:white;
+    font-size: 28px;
+    float: left;
+    font-weight: bold;
+    line-height: 68px;
+    margin: 0;
+    padding: 0;
+}
+
+#myFooter a {
+    color: #d2d1d1;
+    text-decoration: none;
+}
+
+#myFooter a:hover,
+#myFooter a:focus {
+    text-decoration: none;
+    color: white;
+}
+
+#myFooter .second-bar {
+    text-align: center;
+    background-color: #22222F;
+    text-align: center;
+}
+
+#myFooter .second-bar a {
+    font-size: 22px;
+    color: #9fa3a9;
+    padding: 10px;
+    transition: 0.2s;
+    line-height: 68px;
+}
+#myFooter .second-bar li{
+  text-decoration: none;
+  list-style: none;
+ display:inline;
+}
+
+#myFooter .second-bar li a{
+ font-size: 1em;
+
+}
+
+#myFooter .second-bar a:hover {
+    text-decoration: none;
+}
+
+
+#myFooter .third-bar {
+    text-align: center;
+    background-color: #22222F;
+    text-align: center;
+}
+#myFooter .third-bar .container .logo{
+  text-align: left;
+}
+
+#myFooter .third-bar a {
+    font-size: 22px;
+    color: #9fa3a9;
+    padding: 10px;
+    transition: 0.2s;
+    line-height: 68px;
+}
+#myFooter .third-bar li{
+  text-decoration: none;
+  list-style: none;
+ display:inline;
+}
+
+#myFooter .third-bar li a{
+ font-size: 1em;
+
+}
+
+#myFooter .third-bar a:hover {
+    text-decoration: none;
+}
+#myFooter .social-icons {
+    float:right;
+}
+
+
+#myFooter .facebook:hover {
+    color: #0077e2;
+}
+
+#myFooter .google:hover {
+    color: #ef1a1a;
+}
+
+#myFooter .twitter:hover {
+    color: #00aced;
+}
+
+@media screen and (max-width: 767px) {
+    #myFooter {
+        text-align: center;
+    }
+
+    #myFooter .info{
+        text-align: center;
+    }
+
+
+}
+
+html{
+    height: 100%;
+}
+
+
+
+.content{
+   flex: 1 0 auto;
+   -webkit-flex: 1 0 auto;
+   min-height: 200px;
+}
+
+#myFooter{
+   flex: 0 0 auto;
+   -webkit-flex: 0 0 auto;
+}
+
+
+.browse{
+  text-align: center;
+}
+.button{
+  width:30%;
+
+}
+
+.row{
+  height: 20%;
+}
+
+.row .col-md-8{
+  padding-top:  1.5em;
+  padding-bottom:  1.2em;
+  height: 220px;
+}
+.row .col-md-8 .text{
+  position:absolute;
+
+   top:10em; /* in conjunction with left property, decides the text position */
+
+   left:20em;
+ color: #ffffff;
+
+  }
+
+
+.row .col-md-4{
+  padding-top: 1.5em;
+    padding-bottom:  1.2em;
+    height: 220px;
+}
+.row .col-md-4 .text{
+  position:absolute;
+
+  top:2.5em;
+
+  left:4.5em;
+ color: #ffffff;
+
+}
+.row .col-md-8 .text{
+  position:absolute;
+
+  top:5em;
+
+  left:10em;
+ color: #ffffff;
+
+}
+.row .col-md-4:hover {
+  -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    -ms-transform:scale(1.1);
+    -o-transform:scale(1.1);
+    transform:scale(1.1);
+    filter: grayscale();
+
+      overflow: hidden;
+      -webkit-transition:.4s;
+      -moz-transition:.4s;
+      -ms-transition:.4s;
+      -o-transition:.4s;
+      transition:.4s;
+     transition: all 0.4s ease-in-out;
+}
+
+.row .col-md-4 img{
+    -webkit-transform:scale(1);
+     -moz-transform:scale(1);
+     -ms-transform:scale(1);
+     -o-transform:scale(1);
+     transform:scale(1);
+
+     -webkit-transition:1s;
+     -moz-transition:1s;
+     -ms-transition:1s;
+     -o-transition:1s;
+     transition:1s;
+       transition: all 1s ease-in-out;
+       overflow: hidden;
+
+
+}
+.col-md-4 .text .texts{
+  visibility: hidden;
+}
+.col-md-4:hover .texts{
+  visibility: visible;
+  -webkit-transition:1s;
+  -moz-transition:1s;
+  -ms-transition:1s;
+  -o-transition:1s;
+  transition:1s;
+    transition: all 1s ease-in-out;
+}
+
+
+.ih-item.square.effect6 .text{
+  visibility: visible;
+  text-align: center;
+}
+
+
+.container h5{
+  text-align: center;
+}
+.card-title a{
+  color:#000000;
+}
