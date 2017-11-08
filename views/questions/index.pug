@@ -3,26 +3,51 @@ extends ../layout
 include ../includes/_paginate
 
 block content
-  .container
+  .container  
     form.form-inline.search-input-group(action='/questions', method='GET')
       i.fa.fa-search
-      input.form-control.mr-sm-2(type='text', name='term', placeholder='Search', aria-label='Search', value=term)
+      input.form-control.mr-sm-2(type='text', name='term',
+       placeholder='Search', aria-label='Search', value=term)
 
     h1.main-title 
       | Questions
       if questions.total > 0
         .small Total #{questions.total} question(s)
+    
+      .col-lg-4.col-sm-6.portfolio-item
+        .card.h-100
+        if questions.total <= 0 
+          .alert.alert-info No questions available yet
+        else
+          .card-body
+            .questions
+              each question in questions.docs
+                .question
+                  .row
+                    .col-lg-4.col-sm-6.portfolio-item
+                      .card.h-100
+                        a(href='#')
+                          img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
+                        |                 
+                        .card-body
+                          p.card-text
+                            | SUN, OCT 29 7:00PM
+                          |                     
+                          h6.card-title
+                            a.title(href='/questions/${question.id}')= question.title
+                            include _question
+                          |                     
+                          p.card-text
+                            +paginate(questions, '/questions', {query: "???XXX&&"})
+                    |   
+          
+                  //- img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
+                  //- a.title(href=`/questions/${question.id}`)= question.title
+                  //- include _question
+                  //- p.card-text
+                  //-   +paginate(questions, '/questions', {query: "???XXX&&"}) 
 
-    if questions.total <= 0 
-      .alert.alert-info No questions available yet
-    else
-      .questions
-        each question in questions.docs
-          .question
-            a.title(href=`/questions/${question.id}`)= question.title
-            include _question
-
-      +paginate(questions, '/questions', {query: "???XXX&&"})
-
-    hr
-    a.btn.btn-primary(href='/questions/new') Ask Question
+                
+        a.btn.btn-primary(href='/questions/new') Ask Question
+                   
+      

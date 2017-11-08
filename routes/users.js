@@ -1,3 +1,5 @@
+
+/*이것은 question.js와 달리, 옛날방식이다.  */
 var express = require('express'),
     User = require('../models/user');
 var router = express.Router();
