@@ -11,34 +11,30 @@ block content
 
     h1.main-title 
       | Questions
-      if questions.total > 0
-        .small Total #{questions.total} question(s)
-    
-      .col-lg-4.col-sm-6.portfolio-item
-        .card.h-100
-        if questions.total <= 0 
-          .alert.alert-info No questions available yet
-        else
-          .card-body
-            .questions
-              each question in questions.docs
-                .question
-                  .row
-                    .col-lg-4.col-sm-6.portfolio-item
-                      .card.h-100
-                        a(href='#')
-                          img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
-                        |                 
-                        .card-body
-                          p.card-text
-                            | SUN, OCT 29 7:00PM
-                          |                     
-                          h6.card-title
-                            a.title(href='/questions/${question.id}')= question.title
-                            include _question
-                          |                     
-                          p.card-text
-                            +paginate(questions, '/questions', {query: "???XXX&&"})
+      
+      
+      if questions.total <= 0 
+        .alert.alert-info No questions available yet
+      else
+        .card-body
+          .questions
+            each question in questions.docs
+              .question
+                .row
+                  .col-lg-4.col-sm-6.portfolio-item
+                    .card.h-100
+                      a(href='#')
+                        img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
+                      |                 
+                      .card-body
+                        p.card-text
+                          | SUN, OCT 29 7:00PM
+                        |                     
+                        h6.card-title
+                          a.title(href=`/questions/${question.id}`)= question.title
+                          include _question
+                        p.card-text
+                          +paginate(questions, '/questions', {query: "???XXX&&"})
                     |   
           
                   //- img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
