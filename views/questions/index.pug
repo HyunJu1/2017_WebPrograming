@@ -10,7 +10,7 @@ block content
        placeholder='Search', aria-label='Search', value=term)
 
     h1.main-title 
-      | Questions
+      | Events
       
       
       if questions.total <= 0 
@@ -29,7 +29,7 @@ block content
                       |                 
                       .card-body
                         p.card-text
-                          | SUN, OCT 29 7:00PM
+                          .location= question.location
                         |                     
                         h6.card-title
                           a.title(href=`/questions/${question.id}`)= question.title
@@ -45,6 +45,6 @@ block content
                   //-   +paginate(questions, '/questions', {query: "???XXX&&"}) 
 
                 
-        a.btn.btn-primary(href='/questions/new') Ask Question
+      a.btn.btn-primary(href='/questions/new') Register Events
                    
       

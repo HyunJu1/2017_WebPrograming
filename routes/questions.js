@@ -27,7 +27,9 @@ router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기
   if (term) {
     query = {$or: [
       {title: {'$regex': term, '$options': 'i'}},
-      {content: {'$regex': term, '$options': 'i'}}
+      {content: {'$regex': term, '$options': 'i'}},
+      {location: {'$regex': term, '$options': 'i'}},
+      {tags: {'$regex': term, '$options': 'i'}}
     ]};
   }
   const questions = await Question.paginate(query, {   //여기서 await.
@@ -64,6 +66,11 @@ router.put('/:id', catchErrors(async (req, res, next) => {
   }
   question.title = req.body.title;
   question.content = req.body.content;
+  question.location=req.body.location;
+  question.startTime=req.body.startTime;
+  question.endTime=req.body.endTime;
+  question.RegisOrgan=req.body.RegisOrgan;
+  question.RegisOrganCon=req.body.RegisOrganCon;
   question.tags = req.body.tags.split(" ").map(e => e.trim());
 
   await question.save();
@@ -83,6 +90,11 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     title: req.body.title,
     author: user._id,
     content: req.body.content,
+    location: req.body.location,
+    startTime: req.body.startTime,
+    endTime: req.body.endTime,
+    RegisOrgan: req.body.RegisOrgan,
+    RegisOrganCon: req.body.RegisOrganCon,
     tags: req.body.tags.split(" ").map(e => e.trim()),
   });
   await question.save();

@@ -6,6 +6,16 @@ block content
 
     .question.show
       .content= question.content
+      | 어디에서? 
+      .location= question.location
+      | 언제부터?
+      .startTime= question.startTime 
+      | 언제까지?
+      .endTime=question.endTime
+      | 등록 조직 :
+      .RegisOrgan=question.RegisOrgan
+      | 등록 조직 설명 :
+      .RegisOrganCon=question.RegisOrganCon
       include _question
 
       .buttons

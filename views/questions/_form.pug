@@ -1,9 +1,24 @@
 .form-group
   label(for="title") Title
-  input.form-control(type="text", name="title", placeholder="What's your question?", value=question.title)
+  input.form-control(type="text", name="title", placeholder="이벤트의 제목을 입력하시오(필수)", value=question.title)
 .form-group
-  label(for="question") Question
-  textarea.form-control(name="content", rows="5")= question.content
+  label(for="question") Content
+  textarea.form-control(name="content", rows="5",placeholder="이벤트의 상세내용을 입력하시오(필수)")= question.content
+.form-group
+  label(for="location") Location
+  input.form-control(type="text", name="location", placeholder="이벤트 위치를 입력하시오(필수)", value=question.location)
+.form-group
+  label(for="startTime") Start Time
+  input.form-control(type="text", name="startTime", placeholder="이벤트의 시작시간을 입력하시오(필수)", value=question.startTime)
+.form-group
+  label(for="endTime") End Time
+  input.form-control(type="text", name="endTime", placeholder="이벤트의 마감시간을 입력하시오(필수)", value=question.endTime)
+.form-group
+  label(for="RegisOrgan") 등록 조직
+  input.form-control(type="text", name="RegisOrgan", placeholder="이벤트 등록 조직의 이름을 입력하시오(선택)", value=question.RegisOrgan)
+.form-group
+  label(for="RegisOrganCon") 등록 조직 설명
+  textarea.form-control(name="RegisOrganCon", rows="3",placeholder="이벤트 등록 조직이 상세내용을 입력하시오(선택)")= question.RegisOrganCon
 .form-group
   label(for="tags") Tags
   input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=question.tags ? question.tags.join(" ") : "")
