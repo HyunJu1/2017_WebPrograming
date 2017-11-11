@@ -16,11 +16,12 @@ block content
       if questions.total <= 0 
         .alert.alert-info No questions available yet
       else
+        |
         .card-body
           .questions
             each question in questions.docs
               .question
-                .row
+                
                   .col-lg-4.col-sm-6.portfolio-item
                     .card.h-100
                       a(href='#')
