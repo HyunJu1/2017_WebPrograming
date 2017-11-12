@@ -38,6 +38,7 @@ router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기
     page: page, limit: limit
   });
   res.render('questions/index', {questions: questions, term: term});
+  res.render('index', {questions: questions, term: term});
 }));
 
 router.get('/new', needAuth, (req, res, next) => {

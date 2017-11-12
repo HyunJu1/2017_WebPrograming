@@ -8,7 +8,7 @@
       #navbarsExampleDefault.collapse.navbar-collapse
         ul.navbar-nav.ml-auto
           li.nav-item
-            a.nav-link(href="/questions") Events
+            a.nav-link(href="/questions") Browse Events
           li.nav-item
             a.nav-link(href="/users") Users
           if (!currentUser) 
@@ -16,10 +16,13 @@
               a.nav-link(href='/signin') Signin
             li.nav-item
               a.nav-link(href='/users/new') Signup
+            li.nav-item-B
+              a.nav-link-B(href="/questions/new") Create Events
           else
             li.nav-item
               a.nav-link(href=`/users/${currentUser._id}`) My Profile
             li.nav-item
               a.nav-link(href='/signout') Signout
-        
+            li.nav-item-B
+              a.nav-link-B(href="/questions/new") Create Events
           

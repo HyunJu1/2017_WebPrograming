@@ -20,23 +20,25 @@ block content
         .card-body
           .questions
             each question in questions.docs
-              .question
-                
-                  .col-lg-4.col-sm-6.portfolio-item
-                    .card.h-100
-                      a(href='#')
-                        img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
-                      |                 
-                      .card-body
-                        p.card-text
-                          .location= question.location
-                        |                     
-                        h6.card-title
-                          a.title(href=`/questions/${question.id}`)= question.title
-                          include _question
-                        p.card-text
-                          +paginate(questions, '/questions', {query: "???XXX&&"})
-                    |   
+              .question                
+                .row
+                  .col-sm-3
+                    a(href=`/questions/${question.id}`)
+                      img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
+                    |                 
+                  .col-sm-7
+                      p.card-text
+                        .location= question.startTime
+                      |                     
+                      h6.card-title
+                        a.title(href=`/questions/${question.id}`)= question.title
+                      p.card-text
+                        .location= question.location  
+                      include _question
+                    
+                      p.card-text
+                        +paginate(questions, '/questions', {query: "???XXX&&"})
+                  |   
           
                   //- img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
                   //- a.title(href=`/questions/${question.id}`)= question.title

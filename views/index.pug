@@ -36,11 +36,45 @@ block content
           .carousel-caption.d-none.d-md-block
   // Page Content
   .container
-    
-    
-    
+    .search-card
+      .searchmes
+        h3.col-12 Find your next experience
+      .SearchBar
+        .row
+          form.form-inline.search-input-group(action='/questions', method='GET')
+            input.form-control.mr-sm-2(type='text', name='term', placeholder='Search Events or Categories', aria-label='Search', value=term)
+          form.form-inline.search-input-group(action='/questions', method='GET')
+            input.form-control.mr-sm-2(type='text', name='term', placeholder='City or Location', aria-label='Search', value=term)
+
+          .SearchBar-component
+            select#date-range.custom-select(name="date")
+              option(selected="") All Dates
+              option(value="today") Today
+              option(value="tomorrow") Tomorrow
+              option(value="this_week") This Week
+              option(value="this_weekend") This Weekend
+              option(value="next_week") Next Week
+              option(value="next_month") Next Month
+          .SearchBar-component
+            button.btn.btn-light(type="button") SEARCH
+  
+  
+            //- form.search-form(action="/questions", method="GET")
+            //-   .input-group.SearchBar-component
+            //-     i.fa.fa-search
+            //-       input.form-control.mr-sm-2(type='text', name='term', placeholder='Search', aria-label='Search', value=term)
+            //-   .input-group.show-large.g-cell--has-overflow.autocomplete-component.SearchBar-component
+            //-     i.fa.fa-search
+            //-       input.form-control.mr-sm-2(type='text', name='term', placeholder='Search', aria-label='Search', value=term)
+    .rr
+      form.form-inline.search-input-group(action='/questions', method='GET')
+        i.fa.fa-search
+          input.form-control.mr-sm-2(type='text', name='term', placeholder='Search', aria-label='Search', value=term)
+          
+    | 
     br
-    |     
+    br
+    br    
     h5 Popular Events in Seoul, Republic of Korea
     // Portfolio Section
     br
@@ -181,8 +215,9 @@ block content
             p.card-text
               | UGC MBA in &#xC555;&#xAD6C;&#xC815;&#xB3D9; Nonhyun-ro 176-gil 22
     // /.row
-    .button
-      a.btn.btn-lg.btn-secondary.btn-block(href='#') See More
+    .button_loc  
+      .button
+        a.btn.btn-lg.btn-secondary.btn-block(href='/questions') See More
     // Features Section
     br
     |     
