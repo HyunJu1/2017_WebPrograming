@@ -16,20 +16,14 @@ block content
         li(data-target='#carouselExampleIndicators', data-slide-to='2')
       |         
       .carousel-inner(role='listbox')
-        // Slide One - Set the background image for this slide in the line below
         .carousel-item.active
           img(src='images/architecture-2562705_1920.jpg')
           |                 
           .carousel-caption.d-none.d-md-block
-            //
-              <h3>First Slide</h3>
-              <p>This is a description for the first slide.</p>
-        // Slide Two - Set the background image for this slide in the line below
         .carousel-item
           img(src='images/gordon-williams-257623.jpg')
           |                 
           .carousel-caption.d-none.d-md-block
-        // Slide Three - Set the background image for this slide in the line below
         .carousel-item
           img(src='images/img.jpg')
           |                 
@@ -80,22 +74,21 @@ block content
     br
     |     
     .row
-      .col-lg-4.col-sm-6.portfolio-item
-        .card.h-100
-          a(href='#')
-            img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
-          |                 
-          .card-body
-            p.card-text
-              | SUN, OCT 29 7:00PM
-            |                     
-            h6.card-title
-              a(href='#')  European MBA Night (IE, IESE, SDA Bocconi)
-            |                     
-            p.card-text
-              //- .questions
-              //-   .question
-              //-     .content= question.content
+      each question in questions.docs
+        .col-lg-4.col-sm-6.portfolio-item
+          .card.h-100
+            a(href='#')
+              img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
+            |                 
+            .card-body
+              p.card-text= question.content
+              |                     
+              h6.card-title= question.title
+              |                     
+              p.card-text
+                //- .questions
+                //-   .question
+                //-     .content= question.content
       |         
       .col-lg-4.col-sm-6.portfolio-item
         .card.h-100
