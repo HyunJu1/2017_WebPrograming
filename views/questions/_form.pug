@@ -4,6 +4,23 @@
 .form-group
   label(for="question") Content
   textarea.form-control(name="content", rows="5",placeholder="이벤트의 상세내용을 입력하시오(필수)")= question.content
+//- .form-group
+//-   form(action='', method='post', enctype='multipart/form-data', name='')
+//-   label(for="image") Image select
+//-   input.form-control(type="file", name="image", value=question.image)
+.form-group
+  label(for="type") Type &nbsp;
+  select#date-range.custom-select(name="type")
+    option(selected="") 분야 선택
+    option(value="Music") Music
+    option(value="Food") Food and Drink
+    option(value="Class") Class
+    option(value="Arts") Arts
+    option(value="Party") Party
+    option(value="Sports") Sports and Wellness
+    option(value="Networking")  Networking
+
+
 .form-group
   label(for="location") Location
   input.form-control(type="text", name="location", placeholder="이벤트 위치를 입력하시오(필수)", value=question.location)

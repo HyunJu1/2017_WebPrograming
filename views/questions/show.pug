@@ -2,19 +2,31 @@ extends ../layout
 
 block content
   .container
+
+
     h1.main-title= question.title
 
     .question.show
-      .content= question.content
-      | 어디에서? 
-      .location= question.location
-      | 언제부터?
-      .startTime= question.startTime 
-      | 언제까지?
-      .endTime=question.endTime
-      | 등록 조직 :
-      .RegisOrgan=question.RegisOrgan
-      | 등록 조직 설명 :
+      .row
+        .col-sm-6
+          | Description
+          .content= question.content
+        .col-sm-4  
+          | Location
+          .smallText= question.location
+          //- br
+          //- | type
+          //- .smallText= quetion.type
+          br
+          | Date and Time 
+          .smallText= question.startTime 
+          | ~
+          .smallText=question.endTime
+          br
+          | Organizer :
+          .smallText=question.RegisOrgan
+          br
+          | Organizer Description :
       .RegisOrganCon=question.RegisOrganCon
       include _question
 

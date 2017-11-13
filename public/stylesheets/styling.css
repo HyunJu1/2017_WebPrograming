@@ -11,17 +11,43 @@ body {
   -webkit-flex-direction: column;
   height: 100%;
 }
+
+  .rrr .card-body{
+    height: 6em;
+  }
 .button_loc{
 margin-left: 30em;
 }
+.small{
+  font-size: 0.5em;
+}
+.smallText{
+  font-size: 0.9em;
+  color: #585858;
+}
+
+.author {
+  text-align: right;
+  font-size: 0.6em;
+  color: #81bbf2; }
+
+.numbers {
+  text-align: left;
+  color: #81bbf2; }
+
+.card-text{
+  font-size: 0.35em;
+  text-align: left;
+}
+
 .questions{
-  font-size:0.5em;
-  width:50em;
+  font-size:0.35em;
+  width:100%;
 }
 
 .card-text{
   text-decoration: none;
-
+text-align: left;
 }
 .form-inline.search-input-group{
   width: 28%;
@@ -54,9 +80,7 @@ col-lg-4.col-sm-6.portfolio-item{
 }
 
 @media (max-width: 995px) {
-  .row{
-    width: auto;
-  }
+
   .carousel.slide{
 
     margin-top: 0px;
@@ -141,9 +165,7 @@ overflow: hidden; text-overflow: ellipsis;
 .button_loc{
 margin-left: 14em;
 }
-.row{
 
-}
 /*
    .search-card .searchmes {
 
@@ -201,12 +223,12 @@ margin-left: 14em;
   display:none;
   margin-top: 0px;
 }
-.row .col-sm-3{
+/*.row .col-sm-3{
   width: 40%;
 }
 .row .col-sm-7{
   width: 40%;
-}
+}*/
 .button_loc{
 margin-left: 10em;
 width: 100%;
@@ -220,7 +242,7 @@ width: 100%;
   .search-card .SearchBar {
     display: block;
   }
-  .question .row{
+  /*.question .row{
     width: 50%;
 
   }
@@ -229,7 +251,7 @@ height: 50%;
   }
 .row .col-sm-7{
 height: 50%;
-  }
+  }*/
     #myFooter .container .row  {
   display:none;
   overflow: hidden; text-overflow: ellipsis;
@@ -422,9 +444,9 @@ img{
 @media screen and (max-width: 767px) {
 
 
-  .question .row{
+  /*.question .row{
     width: 70%;
-  }
+  }*/
     #myFooter {
         text-align: center;
     }

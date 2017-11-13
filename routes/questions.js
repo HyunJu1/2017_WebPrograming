@@ -29,6 +29,7 @@ router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기
       {title: {'$regex': term, '$options': 'i'}},
       {content: {'$regex': term, '$options': 'i'}},
       {location: {'$regex': term, '$options': 'i'}},
+      {type: {'$regex': term, '$options': 'i'}},
       {tags: {'$regex': term, '$options': 'i'}}
     ]};
   }
@@ -56,6 +57,8 @@ router.get('/:id', catchErrors(async (req, res, next) => {  //글을 눌렀을�
   question.numReads++;    // TODO: 동일한 사람이 본 경우에 Read가 증가하지 않도록???
   await question.save();               //옛날 방식으로 했다면 훨씬 코드가 길어진다. 콜백의 중복. 그래도 옛날 방식으로 해도됨,,
   res.render('questions/show', {question: question, answers: answers});
+  res.render('index', {question: question, answers: answers});
+
 }));
 
 router.put('/:id', catchErrors(async (req, res, next) => {
@@ -67,7 +70,9 @@ router.put('/:id', catchErrors(async (req, res, next) => {
   }
   question.title = req.body.title;
   question.content = req.body.content;
+  quetion.image = req.body.image;
   question.location=req.body.location;
+  question.type=req.body.type.value;
   question.startTime=req.body.startTime;
   question.endTime=req.body.endTime;
   question.RegisOrgan=req.body.RegisOrgan;
@@ -91,6 +96,8 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     title: req.body.title,
     author: user._id,
     content: req.body.content,
+    image: req.body.image,
+    type : req.body.type,
     location: req.body.location,
     startTime: req.body.startTime,
     endTime: req.body.endTime,

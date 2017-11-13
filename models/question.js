@@ -6,6 +6,8 @@ var schema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   title: {type: String, trim: true, required: true},
   content: {type: String, trim: true, required: true},
+  type: {type: String, trim: true, required:false},
+  image: { data: Buffer, contentType: String },
   location: {type: String, trim: true, required: true},
   startTime: {type: String, trim: true, required: false},
   endTime: {type: String, trim: true, required: false},
