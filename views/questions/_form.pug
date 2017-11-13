@@ -8,28 +8,28 @@
 //-   form(action='', method='post', enctype='multipart/form-data', name='')
 //-   label(for="image") Image select
 //-   input.form-control(type="file", name="image", value=question.image)
-.form-group
-  label(for="type") Type &nbsp;
-  select#date-range.custom-select(name="type")
-    option(selected="") 분야 선택
-    option(value="Music") Music
-    option(value="Food") Food and Drink
-    option(value="Class") Class
-    option(value="Arts") Arts
-    option(value="Party") Party
-    option(value="Sports") Sports and Wellness
-    option(value="Networking")  Networking
 
 
 .form-group
   label(for="location") Location
   input.form-control(type="text", name="location", placeholder="이벤트 위치를 입력하시오(필수)", value=question.location)
 .form-group
+  label(for="type") Type &nbsp;
+  select(name="type", size="1")
+    option(value="Music") Music
+    option(value="Food and Drink") Food and Drink
+    option(value="Class") Class
+    option(value="Arts") Arts
+    option(value="Party") Party
+    option(value="Sports and Wellness") Sports and Wellness
+    option(value="Networking")  Networking
+
+.form-group
   label(for="startTime") Start Time
-  input.form-control(type="text", name="startTime", placeholder="이벤트의 시작시간을 입력하시오(필수)", value=question.startTime)
+  input.form-control(type="datetime-local", name="startTime", value=question.startTime)
 .form-group
   label(for="endTime") End Time
-  input.form-control(type="text", name="endTime", placeholder="이벤트의 마감시간을 입력하시오(필수)", value=question.endTime)
+  input.form-control(type="datetime-local", name="endTime", value=question.endTime)
 .form-group
   label(for="RegisOrgan") 등록 조직
   input.form-control(type="text", name="RegisOrgan", placeholder="이벤트 등록 조직의 이름을 입력하시오(선택)", value=question.RegisOrgan)
@@ -37,5 +37,27 @@
   label(for="RegisOrganCon") 등록 조직 설명
   textarea.form-control(name="RegisOrganCon", rows="3",placeholder="이벤트 등록 조직이 상세내용을 입력하시오(선택)")= question.RegisOrganCon
 .form-group
+  label(for="price") 티켓 가격
+    input(type="radio", name="ticket", value="free", checked="")
+    |	free&nbsp;
+    input(type="radio", name="ticket", value="nofree")
+    |	paid
+    input.form-control(type="text", placeholder="가격을 입력하시오", id="price",name="price")
+.form-group
   label(for="tags") Tags
   input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=question.tags ? question.tags.join(" ") : "")
+script.
+  $(function() {
+  	$('#price').hide();
+  	$("input[name='ticket']:radio").change(function() {
+  		var serviceType = this.value;
+
+  		if (serviceType == "free") {
+  			$('#price').hide();
+  		}
+
+  		if (serviceType == "nofree") {
+  			$('#price').show();
+  		}
+  	});
+  });

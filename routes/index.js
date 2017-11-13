@@ -40,7 +40,7 @@ router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기
     populate: 'author',
     page: page, limit: limit
   });
-  console.log(questions)
+  //console.log(questions)
   res.render('index', {questions: questions, term: term});
 }));
 

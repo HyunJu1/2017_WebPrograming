@@ -65,10 +65,7 @@ block content
         i.fa.fa-search
           input.form-control.mr-sm-2(type='text', name='term', placeholder='Search', aria-label='Search', value=term)
           
-    | 
-    br
-    br
-    br    
+    |     
     h5 Popular Events in Seoul, Republic of Korea
     // Portfolio Section
     br
@@ -78,14 +75,18 @@ block content
         .col-lg-4.col-sm-6.portfolio-item
           .card.h-100
             a(href='#')
-              img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
+              img.card-img-top(src='images/taxi-cab-381233_1920.jpg', alt='')
             |                 
             .card-body
-              p.card-text= question.content
+              p.card-text= question.startTime
               |                     
-              h6.card-title= question.title
+              h6.card-title
+                a.title(href=`/questions/${question.id}`)= question.title
               |                     
-              p.card-text
+              p.card-text= question.location
+              hr
+              each tag in question.tags
+                span.badge.badge-phill.badge-secondary= tag
                 //- .questions
                 //-   .question
                 //-     .content= question.content
@@ -93,7 +94,7 @@ block content
       .col-lg-4.col-sm-6.portfolio-item
         .card.h-100
           a(href='#')
-            img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
+            img.card-img-top(src='images/taxi-cab-381233_1920.jpg', alt='')
           |                 
           .card-body
             p.card-text
@@ -104,11 +105,14 @@ block content
             |                     
             p.card-text
               | UGC MBA in &#xC555;&#xAD6C;&#xC815;&#xB3D9; Nonhyun-ro 176-gil 22
+            hr
+            p.card-text
+              | #Health   #Tour
       |         
       .col-lg-4.col-sm-6.portfolio-item
         .card.h-100
           a(href='#')
-            img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
+            img.card-img-top(src='images/taxi-cab-381233_1920.jpg', alt='')
           |                 
           .card-body
             p.card-text
@@ -119,11 +123,14 @@ block content
             |                     
             p.card-text
               | UGC MBA in &#xC555;&#xAD6C;&#xC815;&#xB3D9; Nonhyun-ro 176-gil 22
+            hr
+            p.card-text
+              | #Health   #Tour
       |         
       .col-lg-4.col-sm-6.portfolio-item
         .card.h-100
           a(href='#')
-            img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
+            img.card-img-top(src='images/taxi-cab-381233_1920.jpg', alt='')
           |                 
           .card-body
             p.card-text
@@ -134,11 +141,14 @@ block content
             |                     
             p.card-text
               | UGC MBA in &#xC555;&#xAD6C;&#xC815;&#xB3D9; Nonhyun-ro 176-gil 22
-      |         
+            hr
+            p.card-text
+              | #Health   #Tour
+      |                              
       .col-lg-4.col-sm-6.portfolio-item
         .card.h-100
           a(href='#')
-            img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
+            img.card-img-top(src='images/taxi-cab-381233_1920.jpg', alt='')
           |                 
           .card-body
             p.card-text
@@ -149,11 +159,14 @@ block content
             |                     
             p.card-text
               | UGC MBA in &#xC555;&#xAD6C;&#xC815;&#xB3D9; Nonhyun-ro 176-gil 22
-      |         
+            hr
+            p.card-text
+              | #Health   #Tour
+      |                              
       .col-lg-4.col-sm-6.portfolio-item
         .card.h-100
           a(href='#')
-            img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
+            img.card-img-top(src='images/taxi-cab-381233_1920.jpg', alt='')
           |                 
           .card-body
             p.card-text
@@ -164,55 +177,14 @@ block content
             |                     
             p.card-text
               | UGC MBA in &#xC555;&#xAD6C;&#xC815;&#xB3D9; Nonhyun-ro 176-gil 22
-      |         
-      .col-lg-4.col-sm-6.portfolio-item
-        .card.h-100
-          a(href='#')
-            img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
-          |                 
-          .card-body
+            hr
             p.card-text
-              | SUN, OCT 29 7:00PM
-            |                     
-            h6.card-title
-              a(href='#')  European MBA Night (IE, IESE, SDA Bocconi)
-            |                     
-            p.card-text
-              | UGC MBA in &#xC555;&#xAD6C;&#xC815;&#xB3D9; Nonhyun-ro 176-gil 22
-      |         
-      .col-lg-4.col-sm-6.portfolio-item
-        .card.h-100
-          a(href='#')
-            img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
-          |                 
-          .card-body
-            p.card-text
-              | SUN, OCT 29 7:00PM
-            |                     
-            h6.card-title
-              a(href='#')  European MBA Night (IE, IESE, SDA Bocconi)
-            |                     
-            p.card-text
-              | UGC MBA in &#xC555;&#xAD6C;&#xC815;&#xB3D9; Nonhyun-ro 176-gil 22
-      |         
-      .col-lg-4.col-sm-6.portfolio-item
-        .card.h-100
-          a(href='#')
-            img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
-          |                 
-          .card-body
-            p.card-text
-              | SUN, OCT 29 7:00PM
-            |                     
-            h6.card-title
-              a(href='#')  European MBA Night (IE, IESE, SDA Bocconi)
-            |                     
-            p.card-text
-              | UGC MBA in &#xC555;&#xAD6C;&#xC815;&#xB3D9; Nonhyun-ro 176-gil 22
+              | #Health   #Tour
+            // /.row
     // /.row
     .button_loc  
       .button
-        a.btn.btn-lg.btn-secondary.btn-block(href='/questions') See More
+        a.btn.btn-outline-primary(href='/questions') See More
     // Features Section
     br
     |     

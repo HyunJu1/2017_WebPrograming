@@ -5,13 +5,11 @@ include ../includes/_paginate
 block content
   .container  
     form.form-inline.search-input-group(action='/questions', method='GET')
+      input.form-control.mr-sm-2(type='text', name='term',placeholder='Search', aria-label='Search', value=term)
       i.fa.fa-search
-      input.form-control.mr-sm-2(type='text', name='term',
-       placeholder='Search', aria-label='Search', value=term)
 
     h1.main-title 
-      | Events
-      
+      | Events  
       
       if questions.total <= 0 
         .alert.alert-info No questions available yet
@@ -39,15 +37,12 @@ block content
                     
                       p.card-text
                         +paginate(questions, '/questions', {query: "???XXX&&"})
-                  |   
-          
+                  |             
                   //- img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
                   //- a.title(href=`/questions/${question.id}`)= question.title
                   //- include _question
                   //- p.card-text
-                  //-   +paginate(questions, '/questions', {query: "???XXX&&"}) 
-
-                
+                  //-   +paginate(questions, '/questions', {query: "???XXX&&"})         
       a.btn.btn-primary(href='/questions/new') Register Events
                    
       

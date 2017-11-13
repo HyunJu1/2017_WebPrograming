@@ -41,9 +41,19 @@ router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기
   res.render('index', {questions: questions, term: term});
 }));
 
+
 router.get('/new', needAuth, (req, res, next) => {
   res.render('questions/new', {question: {}});
 });
+// router.get('/new', needAuth, function(req, res, next) {
+// 	User.find({}, function(err, users) {
+// 		if (err) {
+// 			return next(err);
+// 		}
+// 		res.render('questions/new')
+// 	});
+// });
+
 
 router.get('/:id/edit', needAuth, catchErrors(async (req, res, next) => {
   const question = await Question.findById(req.params.id);
@@ -71,11 +81,12 @@ router.put('/:id', catchErrors(async (req, res, next) => {
   question.content = req.body.content;
   quetion.image = req.body.image;
   question.location=req.body.location;
-  question.type=req.body.type.value;
+  question.type =req.body.type;
   question.startTime=req.body.startTime;
   question.endTime=req.body.endTime;
   question.RegisOrgan=req.body.RegisOrgan;
   question.RegisOrganCon=req.body.RegisOrganCon;
+  question.price=req.body.price.value;
   question.tags = req.body.tags.split(" ").map(e => e.trim());
 
   await question.save();
@@ -96,12 +107,13 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     author: user._id,
     content: req.body.content,
     image: req.body.image,
-    type : req.body.type,
     location: req.body.location,
+    type: req.body.type,
     startTime: req.body.startTime,
     endTime: req.body.endTime,
     RegisOrgan: req.body.RegisOrgan,
     RegisOrganCon: req.body.RegisOrganCon,
+    price: req.body.price.value,
     tags: req.body.tags.split(" ").map(e => e.trim()),
   });
   await question.save();
