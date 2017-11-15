@@ -11,7 +11,15 @@ body {
   -webkit-flex-direction: column;
   height: 100%;
 }
-
+.face > .btn.btn-dark.btn-block{
+  background-color: #00008B;
+  margin-top: 6px;
+}
+.kakao > .btn.btn-dark.btn-block{
+  background-color: #FFD700;
+  margin-top: 6px;
+  border-color:  #FFD700;
+}
   .rrr .card-body{
     height: 6em;
   }

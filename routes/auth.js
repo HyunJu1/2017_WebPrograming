@@ -9,6 +9,17 @@ module.exports = (app, passport) => {
     failureFlash : true // allow flash messages
   }));
 
+  // kakao 로그인
+  app.get('/auth/kakao',
+    passport.authenticate('kakao-login')
+  );
+  // kakao 로그인 연동 콜백
+  app.get('/auth/kakao/callback',
+    passport.authenticate('kakao-login', {
+      successRedirect: '/',
+      failureRedirect: '/signin'
+    })
+  );
   app.get('/auth/facebook',
     passport.authenticate('facebook', { scope : 'email' })
   );
