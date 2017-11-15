@@ -10,11 +10,11 @@ module.exports = (app, passport) => {
   }));
 
   // kakao 로그인
-  app.get('/auth/kakao',
+  app.get('/oauth/kakao',
     passport.authenticate('kakao-login')
   );
   // kakao 로그인 연동 콜백
-  app.get('/auth/kakao/callback',
+  app.get('/oauth/kakao/callback',
     passport.authenticate('kakao-login', {
       successRedirect: '/',
       failureRedirect: '/signin'
