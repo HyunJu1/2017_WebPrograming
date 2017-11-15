@@ -30,7 +30,7 @@ module.exports = (app, passport) => {
       failureFlash : true // allow flash messages
     }), (req, res, next) => {
       req.flash('success', 'Welcome!');
-      res.redirect('/questions');
+      res.redirect('/');
     }
   );
 

@@ -60,6 +60,9 @@ router.get('/:id/edit', needAuth, catchErrors(async (req, res, next) => {
   res.render('questions/edit', {question: question});
 }));
 
+
+
+
 router.get('/:id', catchErrors(async (req, res, next) => {  //글을 눌렀을때 글의 내용을 보여쥼
   const question = await Question.findById(req.params.id).populate('author');
   const answers = await Answer.find({question: question.id}).populate('author');
@@ -70,7 +73,7 @@ router.get('/:id', catchErrors(async (req, res, next) => {  //글을 눌렀을�
 
 }));
 
-router.put('/:id', catchErrors(async (req, res, next) => {
+router.post('/:id', catchErrors(async (req, res, next) => {
   const question = await Question.findById(req.params.id);
 
   if (!question) {
@@ -79,7 +82,7 @@ router.put('/:id', catchErrors(async (req, res, next) => {
   }
   question.title = req.body.title;
   question.content = req.body.content;
-  quetion.image = req.body.image;
+  //quetion.image = req.body.image;
   question.location=req.body.location;
   question.type =req.body.type;
   question.startTime=req.body.startTime;
@@ -88,7 +91,6 @@ router.put('/:id', catchErrors(async (req, res, next) => {
   question.RegisOrganCon=req.body.RegisOrganCon;
   question.price=req.body.price.value;
   question.tags = req.body.tags.split(" ").map(e => e.trim());
-
   await question.save();
   req.flash('success', 'Successfully updated');
   res.redirect('/questions');
