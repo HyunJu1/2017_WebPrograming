@@ -69,10 +69,17 @@ router.get('/signin', function(req, res, next) {
 //   });
 // });
 
-router.get('/signout', function(req, res, next) {
-  delete req.session.user;
-  req.flash('success', 'Successfully signed out.');
-  res.redirect('/');
+// router.get('/signout', function(req, res, next) {
+//   delete req.session.user;
+//   req.flash('success', 'Successfully signed out.');
+//   res.redirect('/');
+// });
+
+router.get('/signout', function (req, res){
+
+  req.session.destroy(function (err) {
+    res.redirect('/'); //Inside a callback… bulletproof!
+  });
 });
 
 module.exports = router;
