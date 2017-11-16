@@ -42,7 +42,7 @@
     |	free&nbsp;
     input(type="radio", name="ticket", value="nofree")
     |	paid
-    input.form-control(type="text", placeholder="가격을 입력하시오", id="price",name="price")
+    input.form-control(type="text", placeholder="가격을 입력하시오", id="price",name="price",  value=question.price)
 .form-group
   label(for="tags") Tags
   input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=question.tags ? question.tags.join(" ") : "")

@@ -8,7 +8,8 @@
     .numbers.
       #[span.number.num-votes= question.numLikes] likes,
       #[span.number.num-answers= question.numAnswers] answers,
-      #[span.number.num-views= question.numReads] reads
+      #[span.number.num-views= question.numReads] reads,
+      #[span.number.num-participant= question.participantN] participants
   .col-sm
     .author
       | asked on #{moment(question.createdAt).format('YYYY-MM-DD')}

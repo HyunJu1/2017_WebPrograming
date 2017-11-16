@@ -31,15 +31,21 @@ block content
           br
           | Organizer Description :
           .smallText=question.RegisOrganCon
+          br
+          | participants :
+          .smallText= question.participantN
       include _question
 
       .buttons
         button.btn.btn-primary #[i.fa.fa-thumbs-up] Like
-        | 
-        a.btn.btn-outline-secondary(href=`/questions/${question.id}/edit`) Edit
-        | 
-        a.btn.btn-outline-danger.delete-btn(href="#", data-url=`/questions/${question.id}?_method=delete`) Delete
-      
+        a.btn.btn-outline-danger(href=`/questions/${question._id}/participate`) Participate
+        if currentUser && question.author.id == currentUser.id  
+          | 
+          a.btn.btn-outline-secondary(href=`/questions/${question.id}/edit`) Edit
+          | 
+          a.btn.btn-outline-danger.delete-btn(href="#", data-url=`/questions/${question.id}?_method=delete`) Delete
+          |
+          a.btn.btn-outline-secondary(href=`/questions/${question.id}/participantL`) Participate Lists
     if question.numAnswers > 0
       hr
       h3 #{question.numAnswers} Answer(s)

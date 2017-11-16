@@ -34,15 +34,9 @@ block content
                       p.card-text
                         .small= question.location  
                       include _question
-                    
-                      p.card-text
-                        +paginate(questions, '/questions', {query: "???XXX&&"})
-                  |             
-                  //- img.card-img-top(src='images/vincent-guth-314896.jpg', alt='')
-                  //- a.title(href=`/questions/${question.id}`)= question.title
-                  //- include _question
-                  //- p.card-text
-                  //-   +paginate(questions, '/questions', {query: "???XXX&&"})         
+                      
+          p.card-textt
+            +paginate(questions, '/questions', {query: "???XXX&&"})  
       a.btn.btn-primary(href='/questions/new') Register Events
                    
       

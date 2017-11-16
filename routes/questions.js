@@ -1,10 +1,10 @@
 const express = require('express');
 const Question = require('../models/question');
 const Answer = require('../models/answer');
+const User = require('../models/user');
 const catchErrors = require('../lib/async-error');
 
 const router = express.Router();
-
 // 동일한 코드가 users.js에도 있습니다. 이것은 나중에 수정합시다.
 function needAuth(req, res, next) {
     if (req.isAuthenticated()) {
@@ -14,6 +14,7 @@ function needAuth(req, res, next) {
       res.redirect('/signin');
     }
 }
+
 
 /* GET questions listing. */
 /* Users.js는 옛날방식이다. question.js는 최신구문을 이용하여 간단하게 구현. */
@@ -53,6 +54,32 @@ router.get('/new', needAuth, (req, res, next) => {
 // 		res.render('questions/new')
 // 	});
 // });
+
+router.get('/:id/participate', needAuth, (req, res, next) => {
+  Question.findById(req.params.id, function(err, question) {
+    if (err) {
+      return next(err);
+    }
+    question.participantN++;
+    question.participantL.push(req.user.id);
+    question.save(function(err) {
+      if (err) {
+        return next(err);
+      } else {
+        req.flash('success', 'Successfully Registered');
+        res.redirect('back');
+      }
+    });
+  });
+});
+
+router.get('/:id/participantL', needAuth, catchErrors(async (req, res, next) => {
+  const question = await Question.findById(req.params.id);
+    console.log(question.participantL);
+    const user=  await User.find({_id: question.participantL});
+    res.render('questions/participant_list', {user: user , question: question});
+
+}));
 
 
 router.get('/:id/edit', needAuth, catchErrors(async (req, res, next) => {

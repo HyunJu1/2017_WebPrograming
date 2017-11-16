@@ -14,6 +14,8 @@ var schema = new Schema({
   RegisOrgan: {type: String, trim: true, required: false},
   RegisOrganCon: {type: String, trim: true, required: false},
   price: {type: Number, required: false},
+  participantN: {type: Number, required:false, default:0},
+  participantL: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   tags: [String],
   numLikes: {type: Number, default: 0},
   numAnswers: {type: Number, default: 0},
