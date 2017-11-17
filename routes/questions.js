@@ -56,7 +56,7 @@ router.get('/new', needAuth, (req, res, next) => {
 // });
 
 router.get('/:id/participate', needAuth, (req, res, next) => {
-  Question.findById(req.params.id, function(err, question) {
+  const question =Question.findById(req.params.id, function(err, question) {
     if (err) {
       return next(err);
     }
@@ -67,7 +67,7 @@ router.get('/:id/participate', needAuth, (req, res, next) => {
         return next(err);
       } else {
         req.flash('success', 'Successfully Registered');
-        res.redirect('back');
+        res.render('participant_survey', {question: question});
       }
     });
   });
@@ -117,7 +117,7 @@ router.post('/:id', catchErrors(async (req, res, next) => {
   question.editor1=req.body.editor1;
   question.RegisOrgan=req.body.RegisOrgan;
   question.RegisOrganCon=req.body.RegisOrganCon;
-  question.price=req.body.price.value;
+  question.price=req.body.price;
   question.tags = req.body.tags.split(" ").map(e => e.trim());
   await question.save();
   req.flash('success', 'Successfully updated');
@@ -144,14 +144,20 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     endTime: req.body.endTime,
     RegisOrgan: req.body.RegisOrgan,
     RegisOrganCon: req.body.RegisOrganCon,
-    price: req.body.price.value,
-    tags: req.body.tags.split(" ").map(e => e.trim()),
+    price: req.body.price,
+    tags: req.body.tags.split(" ").map(e => e.trim())
   });
   await question.save();
    //console.log('topic:',topic)
   req.flash('success', 'Successfully posted');
   res.redirect('/questions');
 }));
+
+
+
+
+
+
 
 router.post('/:id/answers', needAuth, catchErrors(async (req, res, next) => { //댓글 관련. 댓글 post
   const user = req.user;

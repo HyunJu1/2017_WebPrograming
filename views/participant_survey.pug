@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .container
+    h1.main-title 이벤트 참여자 대상 설문조사
+    form(action="/", method="POST")
+      .form-group
+        label(for="survey_sosok") 당신의 소속은 어디입니까?
+        input.form-control(type="text", name="survey_sosok")
+      .form-group
+        label(for="survey_reason") 이 이벤트에 참여하려는 이유는 무엇입니까?
+        input.form-control(type="text", name="survey_reason")      
+      button.btn.btn-outline-primary(type="submit") 설문조사 제출
+      br
+      br

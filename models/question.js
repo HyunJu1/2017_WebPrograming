@@ -4,24 +4,26 @@ var mongoose = require('mongoose'),
 
 var schema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User' },
-  title: {type: String, trim: true, required: true},
-  content: {type: String, trim: true, required: true},
+  title: {type: String, trim: true, required: false},
+  content: {type: String, trim: true, required: false},
   editor: {type: String, trim: true, required: false},
   image: { data: Buffer, contentType: String },
-  location: {type: String, trim: true, required: true},
-  topic: {type: String, required:false},
+  location: {type: String, trim: true, required: false},
+  topic: {type: String, required: false},
   startTime: {type: String, trim: true, required: false},
   endTime: {type: String, trim: true, required: false},
   RegisOrgan: {type: String, trim: true, required: false},
   RegisOrganCon: {type: String, trim: true, required: false},
   price: {type: Number, required: false},
   participantN: {type: Number, required:false, default:0},
-  participantL: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  participantL: [{type: Schema.Types.ObjectId, ref: 'User'}],
   tags: [String],
   numLikes: {type: Number, default: 0},
   numAnswers: {type: Number, default: 0},
   numReads: {type: Number, default: 0},
-  createdAt: {type: Date, default: Date.now}
+  createdAt: {type: Date, default: Date.now},
+  survey_sosok: {type: String, trim: true},
+  survey_reason: {type: String, trim: true}
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}

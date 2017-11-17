@@ -1,12 +1,7 @@
 var express = require('express'),
   User = require('../models/user');
-//var router = express.Router();
-
-
 const Question = require('../models/question');
-
 const catchErrors = require('../lib/async-error');
-
 const router = express.Router();
 
 // 동일한 코드가 users.js에도 있습니다. 이것은 나중에 수정합시다.
@@ -18,6 +13,18 @@ function needAuth(req, res, next) {
       res.redirect('/signin');
     }
 }
+
+
+router.post('/', needAuth, catchErrors(async (req, res, next) => {
+  var question = new Question({
+    survey_sosok: req.body.survey_sosok,
+    survey_reason: req.body.survey_reason
+  });
+  await question.save();
+  console.log('topic:', question.survey_sosok);
+  req.flash('success', 'Thank You For Survey!');
+  res.redirect('/');
+}));
 
 /* GET questions listing. */
 /* Users.js는 옛날방식이다. question.js는 최신구문을 이용하여 간단하게 구현. */
