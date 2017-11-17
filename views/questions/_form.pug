@@ -9,20 +9,26 @@
 //-   label(for="image") Image select
 //-   input.form-control(type="file", name="image", value=question.image)
 
+.form-group
+    label(for='editor') Event Description
+      textarea(name='editor', value='editor')
+      script.
+        CKEDITOR.replace( 'editor' );
 
 .form-group
   label(for="location") Location
   input.form-control(type="text", name="location", placeholder="이벤트 위치를 입력하시오(필수)", value=question.location)
+
 .form-group
-  label(for="type") Type &nbsp;
-  select(name="type", size="1")
+  label(for="topic") Event Topic &nbsp;
+  select(name="topic", size="1") 
     option(value="Music") Music
     option(value="Food and Drink") Food and Drink
     option(value="Class") Class
     option(value="Arts") Arts
     option(value="Party") Party
     option(value="Sports and Wellness") Sports and Wellness
-    option(value="Networking")  Networking
+    option(value="Networking")  Networking 
 
 .form-group
   label(for="startTime") Start Time

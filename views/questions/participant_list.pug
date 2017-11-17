@@ -7,12 +7,11 @@ block content
     h1.main-title= question.title
 
     .question.show
-      each user in users
-        .row
-          .col-sm-4
-            | Name
-            .content= user.name
-          .col-sm-4  
-            | Email
-            .smallText= user.email
-    
+      .row
+        .col-sm-4
+          | Name
+          .content= user.name
+        .col-sm-4  
+          | Email
+          .smallText= user.email
+  

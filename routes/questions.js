@@ -75,9 +75,9 @@ router.get('/:id/participate', needAuth, (req, res, next) => {
 
 router.get('/:id/participantL', needAuth, catchErrors(async (req, res, next) => {
   const question = await Question.findById(req.params.id);
-    console.log(question.participantL);
-    const user=  await User.find({_id: question.participantL});
-    res.render('questions/participant_list', {user: user , question: question});
+  console.log(question.participantL);
+  const user=  await User.find({_id: question.participantL});
+  res.render('questions/participant_list', {user: user , question: question});
 
 }));
 
@@ -111,9 +111,10 @@ router.post('/:id', catchErrors(async (req, res, next) => {
   question.content = req.body.content;
   //quetion.image = req.body.image;
   question.location=req.body.location;
-  question.type =req.body.type;
+  question.topic =req.body.topic;
   question.startTime=req.body.startTime;
   question.endTime=req.body.endTime;
+  question.editor1=req.body.editor1;
   question.RegisOrgan=req.body.RegisOrgan;
   question.RegisOrganCon=req.body.RegisOrganCon;
   question.price=req.body.price.value;
@@ -136,8 +137,9 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     author: user._id,
     content: req.body.content,
     image: req.body.image,
+    editor1: req.body.editor1,
     location: req.body.location,
-    type: req.body.type,
+    topic: req.body.topic,
     startTime: req.body.startTime,
     endTime: req.body.endTime,
     RegisOrgan: req.body.RegisOrgan,
@@ -146,12 +148,13 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     tags: req.body.tags.split(" ").map(e => e.trim()),
   });
   await question.save();
+   //console.log('topic:',topic)
   req.flash('success', 'Successfully posted');
   res.redirect('/questions');
 }));
 
 router.post('/:id/answers', needAuth, catchErrors(async (req, res, next) => { //댓글 관련. 댓글 post
-  const user = req.session.user;
+  const user = req.user;
   const question = await Question.findById(req.params.id);
 
   if (!question) {

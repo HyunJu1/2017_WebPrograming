@@ -15,8 +15,11 @@ block content
           | Location
           .smallText= question.location
           //- br
-          //- | type
-          //- .smallText= quetion.type
+          //- | Editor Description
+          //- .smallText= quetion.editor1 
+          //- br
+          //- | Event Topic
+          //- .smallText= quetion.topic
           br
           | Date and Time 
           .smallText= question.startTime 
@@ -26,6 +29,7 @@ block content
           //- | Price:
           //- .smallText=quetion.price
           br
+          
           | Organizer :
           .smallText=question.RegisOrgan
           br
