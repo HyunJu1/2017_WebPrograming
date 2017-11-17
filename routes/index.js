@@ -1,6 +1,7 @@
 var express = require('express'),
   User = require('../models/user');
 const Question = require('../models/question');
+const Survey = require('../models/survey');
 const catchErrors = require('../lib/async-error');
 const router = express.Router();
 
@@ -14,17 +15,18 @@ function needAuth(req, res, next) {
     }
 }
 
-
-router.post('/', needAuth, catchErrors(async (req, res, next) => {
-  var question = new Question({
-    survey_sosok: req.body.survey_sosok,
-    survey_reason: req.body.survey_reason
-  });
-  await question.save();
-  console.log('topic:', question.survey_sosok);
-  req.flash('success', 'Thank You For Survey!');
-  res.redirect('/');
-}));
+//
+// router.post('/', needAuth, catchErrors(async (req, res, next) => {
+//   var survey = new Survey({
+//     author: user._id,
+//     survey_sosok: req.body.survey_sosok,
+//     survey_reason: req.body.survey_reason
+//   });
+//   await survey.save();
+//   console.log('topic:', survey.survey_sosok);
+//   req.flash('success', 'Thank You For Survey!');
+//   res.redirect('/');
+// }));
 
 /* GET questions listing. */
 /* Users.js는 옛날방식이다. question.js는 최신구문을 이용하여 간단하게 구현. */

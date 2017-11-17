@@ -50,6 +50,8 @@ block content
           a.btn.btn-outline-danger.delete-btn(href="#", data-url=`/questions/${question.id}?_method=delete`) Delete
           |
           a.btn.btn-outline-secondary(href=`/questions/${question.id}/participantL`) Participate Lists
+          |
+          a.btn.btn-outline-secondary(href=`/questions/${question.id}/survey`) Participant Survey Result
     if question.numAnswers > 0
       hr
       h3 #{question.numAnswers} Answer(s)

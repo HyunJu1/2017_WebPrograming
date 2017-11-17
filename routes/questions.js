@@ -2,6 +2,7 @@ const express = require('express');
 const Question = require('../models/question');
 const Answer = require('../models/answer');
 const User = require('../models/user');
+const Survey = require('../models/survey');
 const catchErrors = require('../lib/async-error');
 
 const router = express.Router();
@@ -67,7 +68,7 @@ router.get('/:id/participate', needAuth, (req, res, next) => {
         return next(err);
       } else {
         req.flash('success', 'Successfully Registered');
-        res.render('participant_survey', {question: question});
+        res.render('questions/participant_survey', {question: question});
       }
     });
   });
@@ -179,6 +180,31 @@ router.post('/:id/answers', needAuth, catchErrors(async (req, res, next) => { //
 
   req.flash('success', 'Successfully answered');
   res.redirect(`/questions/${req.params.id}`);
+}));
+
+router.post('/:id/surveys', needAuth, catchErrors(async (req, res, next) => {
+  const user = req.user;
+  const question = await Question.findById(req.params.id);
+  var survey = new Survey({
+    author: user._id,
+    question: question._id,
+    survey_sosok: req.body.survey_sosok,
+    survey_reason: req.body.survey_reason
+  });
+  await survey.save();
+  console.log('author:', survey.author);
+  console.log('question:', survey.question);
+  req.flash('success', 'Thank You For Survey!');
+  res.redirect('/');
+}));
+
+
+router.get('/:id/survey', needAuth, catchErrors(async (req, res, next) => {
+  const question = await Question.findById(req.params.id).populate('author');
+  const survey = await Survey.find({question: question.id}).populate('author');
+  console.log('author:', survey.author);
+  console.log('question:', survey.question);
+  res.render('questions/participant_survey_result', {survey: survey , question: question});
 }));
 
 
