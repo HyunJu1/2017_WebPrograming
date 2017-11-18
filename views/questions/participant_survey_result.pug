@@ -4,16 +4,22 @@ block content
   .container
 
 
-    h1.main-title= question.title
+    h1.main-title= questions.title
 
     .question.show
-      .row
-        .col-sm-4
-          | 이름
-          .content= survey.author
-        .col-sm-4
-          | 소속
-          .smallText= survey.survey_sosok  
-          | 참가신청 이유
-          .smallText= survey.survey_reason
+      each survey in surveys
+        .row
+          .col-sm-4
+            .title
+            | 아이디
+            .content= survey.author
+          .col-sm-4
+            .title
+            | 소속
+            .smallText= survey.survey_sosok
+            br
+            br  
+            .title
+            | 참가신청 이유
+            .smallText= survey.survey_reason
   

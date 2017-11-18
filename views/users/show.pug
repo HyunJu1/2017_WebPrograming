@@ -2,22 +2,74 @@ extends ../layout
 
 block content
   .container
-    h1.main-title= user.name
+    h1.main-title= users.name
           
     dl.row
       dt.col-sm-3 Email
       dd.col-sm-9
-        a(href=`mailto:${user.email}`)= user.email
+        a(href=`mailto:${users.email}`)= users.email
 
       dt.col-sm-3 Created At
-      dd.col-sm-3= user.createdAt
+      dd.col-sm-3= users.createdAt
 
-    
 
-    hr
     p
       a.btn.btn-outline-secondary(href='/users/') List
       | 
-      a.btn.btn-outline-primary(href=`/users/${user._id}/edit`) Edit
+      a.btn.btn-outline-primary(href=`/users/${users._id}/edit`) Edit
       | 
-      a.btn.btn-outline-danger(href=`/users/${user._id}?_method=DELETE`) Delete
+      a.btn.btn-outline-danger(href=`/users/${users._id}?_method=DELETE`) Delete
+      
+    br  
+    hr
+    br  
+    h3
+      | My Events
+    table.table.table-hover
+      thead
+        tr
+          th Title
+          th Location
+          th Start Time
+          th Organizer Name
+      tbody
+        each question in questions
+          tr
+            td 
+              a(href=`/questions/${question._id}`)= question.title
+              td= question.location
+              td= question.startTime
+              td= question.RegisOrgan
+              td
+                a.btn.btn-sm.btn-outline-secondary(href=`/questions/${question._id}/edit`) 
+                  | #[i.fa.fa-pencil] Edit
+                | 
+                a.btn.btn-sm.btn-outline-danger(href=`/questions/${question._id}?_method=DELETE`)
+                  | #[i.fa.fa-trash] Delete
+                |
+                |
+                a.btn.btn-sm.btn-outline-secondary(href=`/questions/${question._id}/edit`) 
+                  | #[i.fa.fa-pencil] Edit
+                | 
+                a.btn.btn-sm.btn-outline-danger(href=`/questions/${question._id}?_method=DELETE`)
+                  | #[i.fa.fa-trash] Delete
+    br
+    hr
+    br
+    h3
+      | My Favorite Events
+    table.table.table-hover
+      thead
+        tr
+          th Title
+          th Location
+          th Start Time
+          th Organizer Name
+      tbody
+        each question in questions
+          tr
+            td 
+              a(href=`/questions/${question._id}`)= question.title
+              td= question.location
+              td= question.startTime
+              td= question.RegisOrgan

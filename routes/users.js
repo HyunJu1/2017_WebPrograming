@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../models/user');
+const Question = require('../models/question');
 const router = express.Router();
 const catchErrors = require('../lib/async-error');
 
@@ -84,16 +85,21 @@ router.put('/:id', needAuth, catchErrors(async (req, res, next) => {
   res.redirect('/users');
 }));
 
-router.delete('/:id', needAuth, catchErrors(async (req, res, next) => {
+router.delete('/:id', catchErrors(async (req, res, next) => {
   const user = await User.findOneAndRemove({_id: req.params.id});
   req.flash('success', 'Deleted Successfully.');
   res.redirect('/users');
 }));
 
-router.get('/:id', catchErrors(async (req, res, next) => {
-  const user = await User.findById(req.params.id);
-  res.render('users/show', {user: user});
-}));
+
+router.get('/:id', (req, res, next) => {
+  var users= User.findById(req.params.id, function(err, users) {
+    var questions = Question.find({author: users.id}, function(err, questions) {
+      res.render('users/show', {users: users, questions: questions});
+    });
+  });
+});
+
 
 router.post('/', catchErrors(async (req, res, next) => {
   var err = validateForm(req.body, {needPassword: true});

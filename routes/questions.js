@@ -57,7 +57,7 @@ router.get('/new', needAuth, (req, res, next) => {
 // });
 
 router.get('/:id/participate', needAuth, (req, res, next) => {
-  const question =Question.findById(req.params.id, function(err, question) {
+  const question = Question.findById(req.params.id, function(err, question) {
     if (err) {
       return next(err);
     }
@@ -74,16 +74,24 @@ router.get('/:id/participate', needAuth, (req, res, next) => {
   });
 });
 
-router.get('/:id/participantL', needAuth, catchErrors(async (req, res, next) => {
-  const question = await Question.findById(req.params.id);
-  console.log(question.participantL);
-  const user=  await User.find({_id: question.participantL});
-  res.render('questions/participant_list', {user: user , question: question});
+router.get('/:id/participantL', (req, res, next) => {
+  var questions=Question.findById(req.params.id, function(err, questions) {
+    //console.log(question.title);
+    var users = User.find({_id: questions.participantL}, function(err, users) {
+    //  console.log(question.participantL);
+      res.render('questions/participant_list', {users: users, questions: questions});
+    })
+  })
+})
 
-}));
-
-
-router.get('/:id/edit', needAuth, catchErrors(async (req, res, next) => {
+router.get('/:id/survey',  (req, res, next) => {
+  const questions = Question.findById(req.params.id, function(err, questions) {
+    const surveys = Survey.find({question: questions.id}, function(err, surveys) {
+      res.render('questions/participant_survey_result', { questions: questions, surveys: surveys});
+    });
+  });
+});
+router.get('/:id/edit', catchErrors(async (req, res, next) => {
   const question = await Question.findById(req.params.id);
   res.render('questions/edit', {question: question});
 }));
@@ -125,7 +133,7 @@ router.post('/:id', catchErrors(async (req, res, next) => {
   res.redirect('/questions');
 }));
 
-router.delete('/:id', needAuth, catchErrors(async (req, res, next) => {
+router.delete('/:id', catchErrors(async (req, res, next) => {
   await Question.findOneAndRemove({_id: req.params.id});
   req.flash('success', 'Successfully deleted');
   res.redirect('/questions');
@@ -199,14 +207,13 @@ router.post('/:id/surveys', needAuth, catchErrors(async (req, res, next) => {
 }));
 
 
-router.get('/:id/survey', needAuth, catchErrors(async (req, res, next) => {
-  const question = await Question.findById(req.params.id).populate('author');
-  const survey = await Survey.find({question: question.id}).populate('author');
-  console.log('author:', survey.author);
-  console.log('question:', survey.question);
-  res.render('questions/participant_survey_result', {survey: survey , question: question});
-}));
 
-
+router.get('/:id/survey',  (req, res, next) => {
+  const questions = Question.findById(req.params.id, function(err, questions) {
+    const surveys = Survey.find({question: questions.id}, function(err, surveys) {
+      res.render('questions/participant_survey_result', { questions: questions, surveys: surveys});
+    });
+  });
+});
 
 module.exports = router;

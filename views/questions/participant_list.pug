@@ -4,14 +4,18 @@ block content
   .container
 
 
-    h1.main-title= question.title
-
+    h1.main-title= questions.title
+    br
+    h4
+      | Participant List
+    br
     .question.show
-      .row
-        .col-sm-4
-          | Name
-          .content= user.name
-        .col-sm-4  
-          | Email
-          .smallText= user.email
-  
+      each user in users
+        .row
+          .col-sm-4
+            | Name
+            .content= user.name
+          .col-sm-4  
+            | Email
+            .smallText= user.email
+    
