@@ -5,11 +5,7 @@
   transition: all 0.35s ease-in-out;
 }
 .ih-item,
-/*.ih-item * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}*/
+
 .ih-item a {
   color: #333;
 }
@@ -21,14 +17,7 @@
   height: 100%;
 }
 
-/*
-.ih-item.square {
-  position: relative;
-  width: 316px;
-  height: 216px;
-  border: 8px solid #fff;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}*/
+
 .ih-item.square .info {
   position: absolute;
   top: 0;
@@ -51,15 +40,7 @@
   -moz-transition: all 0.8s ease-in-out;
   transition: all 0.8s ease-in-out;
 }
-/*.ih-item.circle.effect1 .img {
-  position: absolute;
-  top: 10px;
-  bottom: 0;
-  left: 10px;
-  right: 0;
-  width: auto;
-  height: auto;
-}*/
+
 .ih-item.square.effect6 {
   overflow: hidden;
 }

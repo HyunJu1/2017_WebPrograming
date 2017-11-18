@@ -1,8 +1,3 @@
-/*!
- * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
- */
 body {
   padding-top: 25px;
   display: flex;
@@ -11,15 +6,10 @@ body {
   -webkit-flex-direction: column;
   height: 100%;
 }
-/*.page-item .page-link{
-  height: 1em;
-  text-align: center;
+.carousel-item.active > img{
+  height: 100%;
 }
-.page-item{
-  height: 1em;
-  font-size: 1em;
-  text-align: center;
-}*/
+
 .face > .btn.btn-dark.btn-block{
   background-color: #00008B;
   margin-top: 6px;
@@ -53,7 +43,7 @@ margin-left: 30em;
   color: #81bbf2; }
 
 .card-text{
-  font-size: 0.35em;
+  font-size: 0.5em;
   text-align: left;
   text-decoration: none;
 text-align: left;
@@ -137,32 +127,6 @@ overflow: hidden; text-overflow: ellipsis;
 
   }
 
-
-
-
-   /*.search-card .searchmes {
-
-    padding-top: 1.5em;
-
-  }
-   .search-card .searchmes .col-12{
-     font-size: 2em;
-   }
-  .search-card .SearchBar {
-    padding: 2em 0;
-  }
-   .search-card .SearchBar .SearchBar-component {
-
-    width: 20%;
-
-  }
-  .search-card .SearchBar .SearchBar-component .custom-select {
-    width: 100%;
-  }
-  .search-card .SearchBar button {
-
-    width: 100%;
-  }*/
 }
 
 @media (min-width: 700px) {
@@ -182,33 +146,6 @@ overflow: hidden; text-overflow: ellipsis;
 margin-left: 14em;
 }
 
-/*
-   .search-card .searchmes {
-
-    padding-top: 1.5em;
-
-  }
-   .search-card .searchmes .col-12{
-     font-size: 2em;
-   }
-  .search-card .SearchBar {
-    padding: 2em 0;
-  }
-   .search-card .SearchBar .SearchBar-component {
-
-    width: 20%;
-
-  }
-  .search-card .SearchBar .SearchBar-component .custom-select {
-    width: 100%;
-  }
-  .search-card .SearchBar button {
-
-    width: 100%;
-  }
-.search-card .SearchBar button a{
-  font-size: 0.5em;
-}*/*/
 
 }
 @media (min-width: 571px) {
@@ -239,12 +176,7 @@ margin-left: 14em;
   display:none;
   margin-top: 0px;
 }
-/*.row .col-sm-3{
-  width: 40%;
-}
-.row .col-sm-7{
-  width: 40%;
-}*/
+
 .button_loc{
 margin-left: 10em;
 width: 100%;
@@ -258,16 +190,7 @@ width: 100%;
   .search-card .SearchBar {
     display: block;
   }
-  /*.question .row{
-    width: 50%;
 
-  }
-  .row .col-sm-3{
-height: 50%;
-  }
-.row .col-sm-7{
-height: 50%;
-  }*/
     #myFooter .container .row  {
   display:none;
   overflow: hidden; text-overflow: ellipsis;
@@ -314,7 +237,7 @@ height: 50%;
 
 img{
   width : 100%;
-  height: 100%;
+
 }
 
 .navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top{
@@ -481,7 +404,7 @@ html{
 .search-card {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   width: 90%;
-  height: 40%;
+  height: 10%;
   margin: auto;
   position: relative;
   z-index: 2;
@@ -529,26 +452,7 @@ html{
    -webkit-flex: 0 0 auto;
 }
 
-/*
- .navbar-nav a.nav-link {
-    color: #777; }
- .navbar-nav a.nav-link:hover {
-      color: #528bff; }
- .navbar-nav .active a.nav-link {
-    color: #444444; }
- .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#444' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); }
-.bg-dark .navbar-nav a.nav-link {
-    color: #dcdcdc; }
-  .bg-dark .navbar-nav a.nav-link:hover {
-      color: #528bff; }
-.bg-dark .navbar-nav .active a.nav-link {
-    color: #FFFFFF; }
-.bg-dark .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#fff' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); }
 
-header + header {
-  border-top: solid 1px #EEE; }*/
 
 
 
@@ -568,7 +472,7 @@ header + header {
 .row .col-md-8 .text{
   position:absolute;
 
-   top:10em; /* in conjunction with left property, decides the text position */
+   top:10em;
 
    left:30em;
  color: #ffffff;
