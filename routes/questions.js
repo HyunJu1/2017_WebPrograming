@@ -6,7 +6,7 @@ const Survey = require('../models/survey');
 const catchErrors = require('../lib/async-error');
 
 const router = express.Router();
-// 동일한 코드가 users.js에도 있습니다. 이것은 나중에 수정합시다.
+
 function needAuth(req, res, next) {
     if (req.isAuthenticated()) {
       next();
@@ -17,8 +17,6 @@ function needAuth(req, res, next) {
 }
 
 
-/* GET questions listing. */
-/* Users.js는 옛날방식이다. question.js는 최신구문을 이용하여 간단하게 구현. */
 router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기 위해서 "async"
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
@@ -47,14 +45,21 @@ router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기
 router.get('/new', needAuth, (req, res, next) => {
   res.render('questions/new', {question: {}});
 });
-// router.get('/new', needAuth, function(req, res, next) {
-// 	User.find({}, function(err, users) {
-// 		if (err) {
-// 			return next(err);
-// 		}
-// 		res.render('questions/new')
-// 	});
-// });
+
+
+router.get('/:id/favorite', needAuth, (req, res, next) => {
+  const question = Question.findById(req.params.id, function(err, question) {
+    const user = User.findById(req.user.id, function(err, user) {
+      user.favorite.push(question._id);
+      user.save(function(err) {
+        req.flash('success', 'Successfully Add My Favorite');
+        console.log(user.favorite);
+        res.redirect('back');
+      });
+    });
+  });
+});
+
 
 router.get('/:id/participate', needAuth, (req, res, next) => {
   const question = Question.findById(req.params.id, function(err, question) {
@@ -190,7 +195,7 @@ router.post('/:id/answers', needAuth, catchErrors(async (req, res, next) => { //
   res.redirect(`/questions/${req.params.id}`);
 }));
 
-router.post('/:id/surveys', needAuth, catchErrors(async (req, res, next) => {
+router.post('/:id/surveys', catchErrors(async (req, res, next) => {
   const user = req.user;
   const question = await Question.findById(req.params.id);
   var survey = new Survey({
@@ -202,7 +207,7 @@ router.post('/:id/surveys', needAuth, catchErrors(async (req, res, next) => {
   await survey.save();
   console.log('author:', survey.author);
   console.log('question:', survey.question);
-  req.flash('success', 'Thank You For Survey!');
+  req.flash('success', 'Thank You For Survey! You Successfully Registered to Participate!');
   res.redirect('/');
 }));
 

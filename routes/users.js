@@ -95,10 +95,13 @@ router.delete('/:id', catchErrors(async (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   var users= User.findById(req.params.id, function(err, users) {
     var questions = Question.find({author: users.id}, function(err, questions) {
-      res.render('users/show', {users: users, questions: questions});
+      var favorites = Question.find({_id: users.favorite}, function(err, favorites) {
+        res.render('users/show', {users: users, questions: questions, favorites: favorites});
+      });
     });
   });
 });
+
 
 
 router.post('/', catchErrors(async (req, res, next) => {

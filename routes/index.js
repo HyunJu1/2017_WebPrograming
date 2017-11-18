@@ -5,7 +5,7 @@ const Survey = require('../models/survey');
 const catchErrors = require('../lib/async-error');
 const router = express.Router();
 
-// 동일한 코드가 users.js에도 있습니다. 이것은 나중에 수정합시다.
+
 function needAuth(req, res, next) {
     if (req.isAuthenticated()) {
       next();
@@ -15,21 +15,6 @@ function needAuth(req, res, next) {
     }
 }
 
-//
-// router.post('/', needAuth, catchErrors(async (req, res, next) => {
-//   var survey = new Survey({
-//     author: user._id,
-//     survey_sosok: req.body.survey_sosok,
-//     survey_reason: req.body.survey_reason
-//   });
-//   await survey.save();
-//   console.log('topic:', survey.survey_sosok);
-//   req.flash('success', 'Thank You For Survey!');
-//   res.redirect('/');
-// }));
-
-/* GET questions listing. */
-/* Users.js는 옛날방식이다. question.js는 최신구문을 이용하여 간단하게 구현. */
 router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기 위해서 "async"
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
@@ -62,32 +47,11 @@ router.get('/signin', function(req, res, next) {
   res.render('signin');
 });
 
-// // 09-1. Session 참고: 세션을 이용한 로그인
-// router.post('/signin', function(req, res, next) {
-//   User.findOne({email: req.body.email}, function(err, user) {
-//     if (err) {
-//       res.render('error', {message: "Error", error: err});
-//     } else if (!user || user.password !== req.body.password) {
-//       req.flash('danger', 'Invalid username or password.');
-//       res.redirect('back');
-//     } else {
-//       req.session.user = user;
-//       req.flash('success', 'Welcome!');
-//       res.redirect('/');
-//     }
-//   });
-// });
-
-// router.get('/signout', function(req, res, next) {
-//   delete req.session.user;
-//   req.flash('success', 'Successfully signed out.');
-//   res.redirect('/');
-// });
 
 router.get('/signout', function (req, res){
 
   req.session.destroy(function (err) {
-    res.redirect('/'); //Inside a callback… bulletproof!
+    res.redirect('/'); 
   });
 });
 
