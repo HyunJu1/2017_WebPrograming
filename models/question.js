@@ -10,6 +10,7 @@ var schema = new Schema({
   image: { data: Buffer, contentType: String },
   location: {type: String, trim: true, required: true},
   topic: {type: String, trim:true, required: true},
+  eventType: {type: String, trim:true, required: false},
   startTime: {type: String, trim: true, required: false},
   endTime: {type: String, trim: true, required: false},
   RegisOrgan: {type: String, trim: true, required: false},

@@ -126,6 +126,7 @@ router.post('/:id', catchErrors(async (req, res, next) => {
   //quetion.image = req.body.image;
   question.location=req.body.location;
   question.topic =req.body.topic;
+  question.eventType =req.body.eventType;
   question.startTime=req.body.startTime;
   question.endTime=req.body.endTime;
   question.editor1=req.body.editor1;
@@ -154,6 +155,7 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     editor1: req.body.editor1,
     location: req.body.location,
     topic: req.body.topic,
+    eventType: req.body.eventType,
     startTime: req.body.startTime,
     endTime: req.body.endTime,
     RegisOrgan: req.body.RegisOrgan,

@@ -25,6 +25,16 @@
     option(value="Party") Party
     option(value="Sports and Wellness") Sports and Wellness
     option(value="Networking")  Networking 
+.form-group
+  label(for="eventType") Event Type &nbsp;
+  select.form-control(name="eventType")= question.eventType
+    option(value="Health & Wellness") Health and Wellness
+    option(value="Performing & Visual Arts") Performing and Visual Arts
+    option(value="Goverment & Politics") Goverment and Politics
+    option(value="Religion & Spirituality") Religion and Spirituality
+    option(value="School Activity") School Activity
+    option(value="Seminar") Seminar
+    option(value="Others")  Others
 
 .form-group
   label(for="startTime") Start Time
