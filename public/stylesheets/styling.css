@@ -4,11 +4,15 @@ body {
   display: -webkit-flex;
   flex-direction: column;
   -webkit-flex-direction: column;
-  height: 100%;
+
 }
 .carousel-item.active > img{
   height: 100%;
 }
+.card-img{
+  height: 100%;
+}
+
 
 .face > .btn.btn-dark.btn-block{
   background-color: #00008B;
