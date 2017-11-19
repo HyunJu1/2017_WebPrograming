@@ -28,7 +28,7 @@ router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기
       {title: {'$regex': term, '$options': 'i'}},
       {content: {'$regex': term, '$options': 'i'}},
       {location: {'$regex': term, '$options': 'i'}},
-      {type: {'$regex': term, '$options': 'i'}},
+      {topic: {'$regex': term, '$options': 'i'}},
       {tags: {'$regex': term, '$options': 'i'}}
     ]};
   }

@@ -10,15 +10,15 @@ block content
         a(href=`mailto:${users.email}`)= users.email
 
       dt.col-sm-3 Created At
-      dd.col-sm-3= users.createdAt
+      dd.col-sm-3=moment(users.createdAt).format('YYYY년 MM월 DD일 HH시 mm분')
 
 
     p
-      a.btn.btn-outline-secondary(href='/users/') List
+      a.btn.btn-outline-secondary(href='/users/') 회원 목록
       | 
-      a.btn.btn-outline-primary(href=`/users/${users._id}/edit`) Edit
+      a.btn.btn-outline-primary(href=`/users/${users._id}/edit`) 회원정보 수정
       | 
-      a.btn.btn-outline-danger(href=`/users/${users._id}?_method=DELETE`) Delete
+      a.btn.btn-outline-danger(href=`/users/${users._id}?_method=DELETE`) 회원 탈퇴
       
     br  
     hr

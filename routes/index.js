@@ -26,6 +26,7 @@ router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기
       {title: {'$regex': term, '$options': 'i'}},
       {content: {'$regex': term, '$options': 'i'}},
       {location: {'$regex': term, '$options': 'i'}},
+      {topic: {'$regex': term, '$options': 'i'}},
       {tags: {'$regex': term, '$options': 'i'}}
     ]};
   }
@@ -51,7 +52,7 @@ router.get('/signin', function(req, res, next) {
 router.get('/signout', function (req, res){
 
   req.session.destroy(function (err) {
-    res.redirect('/'); 
+    res.redirect('/');
   });
 });
 
