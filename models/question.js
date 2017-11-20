@@ -18,6 +18,7 @@ var schema = new Schema({
   price: {type: Number, trim: true, required: false},
   participantN: {type: Number, required:false, default:0},
   participantL: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  participantLimit: {type: Number, required:false},
   tags: [String],
   numLikes: {type: Number, default: 0},
   numAnswers: {type: Number, default: 0},

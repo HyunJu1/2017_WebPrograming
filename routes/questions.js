@@ -63,19 +63,36 @@ router.get('/:id/favorite', needAuth, (req, res, next) => {
 
 router.get('/:id/participate', needAuth, (req, res, next) => {
   const question = Question.findById(req.params.id, function(err, question) {
-    if (err) {
-      return next(err);
+    if(!question.participantLimit){
+      question.participantN++;
+      question.participantL.push(req.user.id);
+      question.save(function(err) {
+        if (err) {
+          return next(err);
+        } else {
+          req.flash('success', 'Successfully Registered');
+          res.render('questions/participant_survey', {question: question});
+        }
+      });
     }
-    question.participantN++;
-    question.participantL.push(req.user.id);
-    question.save(function(err) {
-      if (err) {
-        return next(err);
-      } else {
-        req.flash('success', 'Successfully Registered');
-        res.render('questions/participant_survey', {question: question});
+    else {
+      if(question.participantN < question.participantLimit){
+        question.participantN++;
+        question.participantL.push(req.user.id);
+        question.save(function(err) {
+          if (err) {
+            return next(err);
+          } else {
+            req.flash('success', 'Successfully Registered');
+            res.render('questions/participant_survey', {question: question});
+          }
+        });
       }
-    });
+      else {
+        req.flash('danger', 'Sorry, The Event Participate is full');
+        return res.redirect('back');
+      }
+    }
   });
 });
 
@@ -131,6 +148,8 @@ router.post('/:id', catchErrors(async (req, res, next) => {
   question.startTime=req.body.startTime;
   question.endTime=req.body.endTime;
   question.editor=req.body.editor;
+  question.startTime=req.body.startTime;
+  question.participantLimit=req.body.participantLimit;
   question.RegisOrgan=req.body.RegisOrgan;
   question.RegisOrganCon=req.body.RegisOrganCon;
   question.price=req.body.price;
@@ -155,11 +174,13 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     content: req.body.content,
     image: req.body.image,
     editor: req.body.editor,
+    participantLimit: req.body.participantLimit,
     location: req.body.location,
     topic: req.body.topic,
     eventType: req.body.eventType,
     startTime: req.body.startTime,
     endTime: req.body.endTime,
+
     RegisOrgan: req.body.RegisOrgan,
     RegisOrganCon: req.body.RegisOrganCon,
     price: req.body.price,
