@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 var schema = new Schema({
   name: {type: String, required: true, trim: true},
+  isAdmin: {type: Boolean},
   email: {type: String, required: true, index: true, unique: true, trim: true},
   password: {type: String},
   facebook: {id: String, token: String, photo: String},

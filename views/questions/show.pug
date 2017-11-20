@@ -11,12 +11,12 @@ block content
         .col-sm-6
           | Description
           .content= question.content
+          br
+          | Editor Description
+          .smallText!= question.editor
         .col-sm-4  
           | Location
           .smallText= question.location
-          //- br
-          //- | Editor Description
-          //- .smallText= quetion.editor1 
           br
           | Event Topic
           .smallText= question.topic

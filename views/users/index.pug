@@ -3,31 +3,32 @@ extends ../layout
 block content
   .container
     h1.main-title 회원 목록
-    
-    table.table.table-hover
-      thead
-        tr
-          th Name
-          th Email
-          th Created At
-          th
-      tbody
-        each user in users
+    if (currentUser.email == 'admin@naver.com')
+      table.table.table-hover
+        thead
           tr
-            td
-              if currentUser && user.id == currentUser.id  
-                a(href=`/users/${user._id}`)= user.name
-              else
-                = user.name
-            td= user.email
-            td= moment(user.createdAt).format('YYYY년 MM월 DD일 HH시 mm분')
-            td
-              if currentUser && user.id == currentUser.id  
-                a.btn.btn-sm.btn-outline-secondary(href=`/users/${user._id}/edit`) 
-                  | #[i.fa.fa-pencil] 회원정보 수정
-                | 
-                a.btn.btn-sm.btn-outline-danger(href=`/users/${user._id}?_method=DELETE`)
-                  | #[i.fa.fa-trash] 회원 탈퇴
-    a.btn.btn-primary(href='/users/new') #[i.fa.fa-plus] Register a new user
-    br
-    br  
+            th Name
+            th Email
+            th Created At
+            th
+        tbody
+          each user in users          
+              tr
+                td
+                  a(href=`/users/${user._id}`)= user.name
+                td= user.email
+                td= moment(user.createdAt).format('YYYY년 MM월 DD일 HH시 mm분')
+                td
+                  a.btn.btn-sm.btn-outline-secondary(href=`/users/${user._id}/edit`) 
+                    | #[i.fa.fa-pencil] 회원정보 수정
+                  | 
+                  a.btn.btn-sm.btn-outline-danger(href=`/users/${user._id}?_method=DELETE`)
+                    | #[i.fa.fa-trash] 회원 탈퇴            
+        a.btn.btn-primary(href='/users/new') #[i.fa.fa-plus] Register a new user
+        br
+        br 
+    else 
+      script.
+        alert('관리자만 열람 가능합니다');
+              
+   

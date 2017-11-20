@@ -108,7 +108,8 @@ router.get('/:id', catchErrors(async (req, res, next) => {  //글을 눌렀을�
   const question = await Question.findById(req.params.id).populate('author');
   const answers = await Answer.find({question: question.id}).populate('author');
   question.numReads++;    // TODO: 동일한 사람이 본 경우에 Read가 증가하지 않도록???
-  await question.save();               //옛날 방식으로 했다면 훨씬 코드가 길어진다. 콜백의 중복. 그래도 옛날 방식으로 해도됨,,
+  await question.save();
+  console.log(question);             //옛날 방식으로 했다면 훨씬 코드가 길어진다. 콜백의 중복. 그래도 옛날 방식으로 해도됨,,
   res.render('questions/show', {question: question, answers: answers});
   res.render('index', {question: question, answers: answers});
 
@@ -129,7 +130,7 @@ router.post('/:id', catchErrors(async (req, res, next) => {
   question.eventType =req.body.eventType;
   question.startTime=req.body.startTime;
   question.endTime=req.body.endTime;
-  question.editor1=req.body.editor1;
+  question.editor=req.body.editor;
   question.RegisOrgan=req.body.RegisOrgan;
   question.RegisOrganCon=req.body.RegisOrganCon;
   question.price=req.body.price;
@@ -147,12 +148,13 @@ router.delete('/:id', catchErrors(async (req, res, next) => {
 
 router.post('/', needAuth, catchErrors(async (req, res, next) => {
   const user = req.user;
+  console.log(req.body);
   var question = new Question({
     title: req.body.title,
     author: user._id,
     content: req.body.content,
     image: req.body.image,
-    editor1: req.body.editor1,
+    editor: req.body.editor,
     location: req.body.location,
     topic: req.body.topic,
     eventType: req.body.eventType,
@@ -168,10 +170,6 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
   req.flash('success', 'Successfully posted');
   res.redirect('/questions');
 }));
-
-
-
-
 
 
 

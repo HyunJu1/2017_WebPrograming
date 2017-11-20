@@ -7,9 +7,9 @@
 
 .form-group
     label(for='editor') Event Description
-      textarea(name='editor', value='editor')
+      textarea(name='editor')= question.editor
       script.
-        CKEDITOR.replace( 'editor' );
+        CKEDITOR.replace('editor');
 
 .form-group
   label(for="location") Location
