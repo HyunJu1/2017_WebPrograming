@@ -102,6 +102,14 @@ router.get('/:id', (req, res, next) => {
   });
 });
 
+// router.get('/auth/kakao', passport.authenticate('kakao',{
+//     failureRedirect: 'back'
+// }), users.signin);
+//
+// router.get('/oauth', passport.authenticate('kakao', {
+//     failureRedirect: 'back'
+// }), users.authCallback);
+
 
 
 router.post('/', catchErrors(async (req, res, next) => {
