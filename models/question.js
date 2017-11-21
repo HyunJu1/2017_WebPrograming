@@ -10,6 +10,7 @@ var schema = new Schema({
   image: { data: Buffer, contentType: String },
   location: {type: String, trim: true, required: true},
   location_map: {type: String, trim: true, required: false},
+  location_latLng:  {type: String, trim: true, required: false},
   topic: {type: String, trim:true, required: false},
   eventType: {type: String, trim:true, required: false},
   startTime: {type: String, trim: true, required: false},

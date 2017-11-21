@@ -147,7 +147,9 @@ router.post('/:id', catchErrors(async (req, res, next) => {
   question.eventType =req.body.eventType;
   question.startTime=req.body.startTime;
   question.endTime=req.body.endTime;
+  question.location_latLng=req.body.mouseEvent.latLng;
   question.editor=req.body.editor;
+  question.location_map=req.body.detailAddr;
   question.startTime=req.body.startTime;
   question.participantLimit=req.body.participantLimit;
   question.RegisOrgan=req.body.RegisOrgan;
@@ -174,6 +176,8 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     content: req.body.content,
     image: req.body.image,
     editor: req.body.editor,
+    location_map: req.body.detailAddr,
+    location_latLng:req.body.mouseEvent.latLng,
     participantLimit: req.body.participantLimit,
     location: req.body.location,
     topic: req.body.topic,
