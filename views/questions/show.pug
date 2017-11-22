@@ -79,7 +79,10 @@ block content
       include _question
 
       .buttons
-        button.btn.btn-primary #[i.fa.fa-thumbs-up] Like
+        if currentUser
+          button.btn.btn-primary.question-like-btn(data-id=question.id) 
+            span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
+            span #[i.fa.fa-thumbs-up] Like
         |
         |
         a.btn.btn-outline-dark(href=`/questions/${question._id}/participate`) Participate
@@ -123,3 +126,5 @@ block content
         return false;
       });
     });
+  
+  script(src='/javascripts/question_client.js')

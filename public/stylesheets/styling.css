@@ -6,6 +6,39 @@ body {
   -webkit-flex-direction: column;
 
 }
+
+.question-like-btn, .answer-like-btn {
+  .for-loading {display: none;}
+  cursor: pointer;
+
+  &.loading {
+    & > span {display: none;}
+   .for-loading {display: inline-block;}
+    filter: opacity(30%);
+    cursor: wait;
+  }
+
+  &.disabled {
+    color: #bbb;
+    cursor: default;
+  }
+}
+
+.question-like-btn, .answer-like-btn {
+  cursor: pointer; }
+  .question-like-btn .for-loading, .answer-like-btn .for-loading {
+    display: none; }
+  .question-like-btn.loading, .answer-like-btn.loading {
+    filter: opacity(30%);
+    cursor: wait; }
+    .question-like-btn.loading > span, .answer-like-btn.loading > span {
+      display: none; }
+    .question-like-btn.loading .for-loading, .answer-like-btn.loading .for-loading {
+      display: inline-block; }
+  .question-like-btn.disabled, .answer-like-btn.disabled {
+    color: #bbb;
+    cursor: default; }
+
 .carousel-item.active > img{
   height: 100%;
 }
