@@ -19,7 +19,10 @@ block content
           .smallText= question.location
           br
           | Location_Map
-          .smallText= question.location_map
+          .smallText!= question.location_map
+          br
+          | 위도와 경도
+          .smallText= question.location_latLng
           br
           | Event Topic
           .smallText= question.topic

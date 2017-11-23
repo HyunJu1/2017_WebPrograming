@@ -53,7 +53,7 @@ router.get('/:id/favorite', needAuth, (req, res, next) => {
       user.favorite.push(question._id);
       user.save(function(err) {
         req.flash('success', 'Successfully Add My Favorite');
-        console.log(user.favorite);
+        //console.log(user.favorite);
         res.redirect('back');
       });
     });
@@ -126,7 +126,7 @@ router.get('/:id', catchErrors(async (req, res, next) => {  //글을 눌렀을�
   const answers = await Answer.find({question: question.id}).populate('author');
   question.numReads++;    // TODO: 동일한 사람이 본 경우에 Read가 증가하지 않도록???
   await question.save();
-  console.log(question);             //옛날 방식으로 했다면 훨씬 코드가 길어진다. 콜백의 중복. 그래도 옛날 방식으로 해도됨,,
+  //console.log(question);             //옛날 방식으로 했다면 훨씬 코드가 길어진다. 콜백의 중복. 그래도 옛날 방식으로 해도됨,,
   res.render('questions/show', {question: question, answers: answers});
   res.render('index', {question: question, answers: answers});
 
@@ -147,9 +147,9 @@ router.post('/:id', catchErrors(async (req, res, next) => {
   question.eventType =req.body.eventType;
   question.startTime=req.body.startTime;
   question.endTime=req.body.endTime;
-  // question.location_latLng=req.body.mouseEvent.latLng;
+  question.location_latLng=req.body.location_latLng;
   question.editor=req.body.editor;
-  // question.location_map=req.body.detailAddr;
+  question.location_map=req.body.location_map;
   question.startTime=req.body.startTime;
   question.participantLimit=req.body.participantLimit;
   question.RegisOrgan=req.body.RegisOrgan;
@@ -169,29 +169,27 @@ router.delete('/:id', catchErrors(async (req, res, next) => {
 
 router.post('/', needAuth, catchErrors(async (req, res, next) => {
   const user = req.user;
-  console.log(req.body);
+  //console.log(req.body);
   var question = new Question({
     title: req.body.title,
     author: user._id,
     content: req.body.content,
     image: req.body.image,
     editor: req.body.editor,
-    location_map: req.body.detailAddr,
-    location_latLng:req.body.mouseEvent.latLng,
+    location_map: req.body.location_map,
+    location_latLng: req.body.location_latLng,
     participantLimit: req.body.participantLimit,
     location: req.body.location,
     topic: req.body.topic,
     eventType: req.body.eventType,
     startTime: req.body.startTime,
     endTime: req.body.endTime,
-
     RegisOrgan: req.body.RegisOrgan,
     RegisOrganCon: req.body.RegisOrganCon,
     price: req.body.price,
     tags: req.body.tags.split(" ").map(e => e.trim())
   });
   await question.save();
-   //console.log('topic:',topic)
   req.flash('success', 'Successfully posted');
   res.redirect('/questions');
 }));
@@ -230,8 +228,8 @@ router.post('/:id/surveys', catchErrors(async (req, res, next) => {
     survey_reason: req.body.survey_reason
   });
   await survey.save();
-  console.log('author:', survey.author);
-  console.log('question:', survey.question);
+  //console.log('author:', survey.author);
+  //console.log('question:', survey.question);
   req.flash('success', 'Thank You For Survey! You Successfully Registered to Participate!');
   res.redirect('/');
 }));

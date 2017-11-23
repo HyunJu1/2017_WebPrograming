@@ -1,5 +1,6 @@
 $(function() {
   $('.question-like-btn').click(function(e) {
+    console.log('im here');
     var $el = $(e.currentTarget);
     if ($el.hasClass('loading')) return;
     $el.addClass('loading');

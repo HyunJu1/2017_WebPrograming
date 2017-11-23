@@ -25,7 +25,10 @@
   .map_wrap
     #map(style='width:100%;height:100%;position:relative;overflow:hidden;')
     |     
-  .hAddr        
+  .hAddr  
+    input.form-control(type="hidden", id="location_map",name="location_map", value=detailAddr)
+  .hAddr    
+    input.form-control(type="hidden", id="location_latLng",name="location_latLng", value=latLng)        
     span#centerAddr
       script(type='text/javascript', src='//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd9912d6b7fb647f736ab86b4da94d5&libraries=services')
       script.
@@ -36,6 +39,7 @@
         };
         // 지도를 생성합니다
         var map = new daum.maps.Map(mapContainer, mapOption);
+        var detailAddr;
         // 주소-좌표 변환 객체를 생성합니다
         var geocoder = new daum.maps.services.Geocoder();
         var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
@@ -48,12 +52,15 @@
         daum.maps.event.addListener(map, 'click', function(mouseEvent) {
         searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
         if (status === daum.maps.services.Status.OK) {
-        var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+        detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
         detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
         var content = '<div class="bAddr">' +
         '<span class="title">법정동 주소정보</span>' +
         detailAddr +
         '</div>';
+        document.getElementById('location_map').value= detailAddr;
+        document.getElementById('location_latLng').value= mouseEvent.latLng;
+      
         // 마커를 클릭한 위치에 표시합니다
         marker.setPosition(mouseEvent.latLng);
         marker.setMap(map);
@@ -82,6 +89,7 @@
         infoDiv.innerHTML = result[0].address_name;
         }
         }
+
 
       
 .form-group

@@ -119,7 +119,7 @@ router.post('/', catchErrors(async (req, res, next) => {
     return res.redirect('back');
   }
   var user = await User.findOne({email: req.body.email});
-  console.log('USER???', user);
+  //console.log('USER???', user);
   if (user) {
     req.flash('danger', 'Email address already exists.');
     return res.redirect('back');
