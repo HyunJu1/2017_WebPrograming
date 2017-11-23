@@ -49,47 +49,21 @@ module.exports = (app, passport) => {
     failureFlash : true // allow flash messages
   }));
 
-  // kakao 로그인
+//  kakao 로그인
   app.get('/auth/kakao',
     passport.authenticate('kakao-login')
   );
-
-  // kakao 로그인 연동 콜백
-  app.get('/oauth',
+//카카오톡 연동 콜백
+  app.get('/auth/kakao/callback',
     passport.authenticate('kakao-login', {
-      failureRedirect : '/signin',
-      failureFlash : true // allow flash messages
-    }), function(accessToken, refreshToken, profile, done){
-        console.log('suuccess!');
-        console.log('kakao!',profile.id, profile.name);
-        User.findOne({
-            'kakao.id' : profile.id
-        }, function(err, user){
-            if(err){
-                return done(err);
-            }//d
-            if(!user){
-                user = new User({
-                    name: profile.username,
-                    id: profile.id,
-                    // id: profile.id,
-                    // roles : ['authenticated'],
-                    // provider: 'kakao',
-                    kakao: profile._json
-                });
-
-                user.save(function(err){
-                    if(err){
-                        console.log(err);
-                    }
-                    return done(err, user);
-                });
-            }else{
-                return done(err, user);
-            }
-        });
+      failureRedirect: '/',
+      failureFlash: true
+    }), (req, res, next) =>{
+      req.flash('success', 'Welcome!');
+      res.redirect('/events');
     }
   );
+
 
   // app.get('/auth/kakao', passport.authenticate('kakao',{
   //     failureRedirect: 'back'
