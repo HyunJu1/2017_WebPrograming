@@ -16,8 +16,6 @@
   width: 100%;
   height: 100%;
 }
-
-
 .ih-item.square .info {
   position: absolute;
   top: 0;
@@ -40,7 +38,6 @@
   -moz-transition: all 0.8s ease-in-out;
   transition: all 0.8s ease-in-out;
 }
-
 .ih-item.square.effect6 {
   overflow: hidden;
 }
@@ -72,7 +69,6 @@
   -moz-transition: all 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
 }
-
 .ih-item.square.effect6 .text{
 position:absolute;
   visibility: visible;
@@ -80,7 +76,6 @@ position:absolute;
   font-size: 0.5em;
    margin-left: 0.2em;
       margin-top: 0.2em;
-
 }
 .ih-item.square.effect6 .info h3 {
   text-transform: uppercase;
@@ -88,18 +83,15 @@ position:absolute;
   text-align: center;
   font-size: 1.2em;
   padding: 10px;
-
   margin: 2.5em 0 0 0;
   -webkit-transition: all 0.35s ease-in-out;
   -moz-transition: all 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
 }
 .ih-item.square.effect6 .info p {
-
   font-size: 1em;
   position: relative;
   color: #bbb;
-  /*padding: 20px 20px 20px;*/
   text-align: center;
   -webkit-transition: all 0.25s 0.1s linear;
   -moz-transition: all 0.25s 0.1s linear;
@@ -116,7 +108,6 @@ position:absolute;
   visibility: visible;
   opacity: 1;
 }
-
 .ih-item.square.effect6.from_top_and_bottom .info h3 {
   -webkit-transform: translateY(-100%);
   -moz-transform: translateY(-100%);
@@ -139,7 +130,6 @@ position:absolute;
   -o-transform: translateY(0);
   transform: translateY(0);
 }
-
 .ih-item.square.effect6.from_left_and_right .info h3 {
   -webkit-transform: translateX(-100%);
   -moz-transform: translateX(-100%);

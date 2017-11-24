@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 
 var schema = new Schema({
   name: {type: String, required: true, trim: true},
-  isAdmin: {type: Boolean},
   email: {type: String, required: true, index: true, unique: true, trim: true},
   password: {type: String},
   facebook: {id: String, token: String, photo: String},
   kakaotalk: {id: String, token: String, photo: String},
   favorite: [{type: Schema.Types.ObjectId, ref: 'Question'}],
+  recommend: [{type: Schema.Types.ObjectId, ref: 'Question'}],
   createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},

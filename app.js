@@ -61,6 +61,7 @@ app.use(sassMiddleware({
 
 // session을 사용할 수 있도록.
 app.use(session({
+  name: 'HJ-Eventbrite',
   resave: true,
   saveUninitialized: true,
   secret: 'long-long-long-secret-string-1313513tefgwdsvbjkvasd'
@@ -90,7 +91,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/questions', questions);
 require('./routes/auth')(app, passport);
-
+app.use('/api', require('./routes/api'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

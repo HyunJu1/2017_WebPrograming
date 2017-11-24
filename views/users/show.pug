@@ -79,3 +79,28 @@ block content
               td= favorite.startTime
               td= favorite.RegisOrgan
               td= favorite.participantN
+              
+          
+    br
+    hr
+    br
+    h3
+      | Recommended Events For You
+    br
+    table.table.table-hover
+      thead
+        tr
+          th Title
+          th Location
+          th Start Time
+          th Organizer Name
+          th Participant
+      tbody
+        each recommend in recommends
+          tr
+            td 
+              a(href=`/questions/${recommend._id}`)= recommend.title
+              td= recommend.location
+              td= recommend.startTime
+              td= recommend.RegisOrgan
+              td= recommned.participantN

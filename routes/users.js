@@ -96,21 +96,13 @@ router.get('/:id', (req, res, next) => {
   var users= User.findById(req.params.id, function(err, users) {
     var questions = Question.find({author: users.id}, function(err, questions) {
       var favorites = Question.find({_id: users.favorite}, function(err, favorites) {
-        res.render('users/show', {users: users, questions: questions, favorites: favorites});
+        var recommends = Question.find({_id: users.recommend}, function(err, recommends) {
+        res.render('users/show', {users: users, questions: questions, favorites: favorites, recommend:recommends});
+        });  
       });
     });
   });
 });
-
-// router.get('/auth/kakao', passport.authenticate('kakao',{
-//     failureRedirect: 'back'
-// }), users.signin);
-//
-// router.get('/oauth', passport.authenticate('kakao', {
-//     failureRedirect: 'back'
-// }), users.authCallback);
-
-
 
 router.post('/', catchErrors(async (req, res, next) => {
   var err = validateForm(req.body, {needPassword: true});
