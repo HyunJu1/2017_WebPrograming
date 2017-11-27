@@ -1,3 +1,4 @@
+var cool = require('cool-ascii-faces');
 var express = require('express'),
   User = require('../models/user');
 const Question = require('../models/question');
@@ -14,7 +15,9 @@ function needAuth(req, res, next) {
       res.redirect('/signin');
     }
 }
-
+router.get('/cool', function(request, response) {
+  response.send(cool());
+});
 router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기 위해서 "async"
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
