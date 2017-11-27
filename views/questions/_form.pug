@@ -28,8 +28,8 @@
   .hAddr  
     input.form-control(type="text", id="location_map",name="location_map", value=question.location_map)
   .hAddr    
-    input.form-control(type="text", id="lat",name="lat", value=question.lat)        
-    input.form-control(type="text", id="lng",name="lng", value=question.lng)        
+    input.form-control(type="hidden", id="lat",name="lat", value=question.lat)        
+    input.form-control(type="hidden", id="lng",name="lng", value=question.lng)        
     span#centerAddr
       script(type='text/javascript', src='//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd9912d6b7fb647f736ab86b4da94d5&libraries=services')
       script.
