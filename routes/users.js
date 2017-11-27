@@ -93,12 +93,16 @@ router.delete('/:id', needAuth,catchErrors(async (req, res, next) => {
 
 
 router.get('/:id', (req, res, next) => {
+
   var users= User.findById(req.params.id, function(err, users) {
-    var questions = Question.find({author: users.id}, function(err, questions) {
-      var favorites = Question.find({_id: users.favorite}, function(err, favorites) {
-        var recommends = Question.find({_id: users.recommend}, function(err, recommends) {
-        res.render('users/show', {users: users, questions: questions, favorites: favorites, recommend:recommends});
-        });  
+    var question = Question.find({}, function(err, question) {
+      var recommends = Question.find({_id: question.recommend}, function(err, recommends) {
+        var questions = Question.find({author: users.id}, function(err, questions) {
+          var favorites = Question.find({_id: users.favorite}, function(err, favorites) {
+            res.render('users/show', {users: users, questions: questions, favorites: favorites, recommends: recommends
+            });
+          });
+        });
       });
     });
   });

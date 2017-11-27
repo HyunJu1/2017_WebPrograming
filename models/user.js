@@ -9,7 +9,6 @@ var schema = new Schema({
   facebook: {id: String, token: String, photo: String},
   kakaotalk: {id: String, token: String, photo: String},
   favorite: [{type: Schema.Types.ObjectId, ref: 'Question'}],
-  recommend: [{type: Schema.Types.ObjectId, ref: 'Question'}],
   createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},

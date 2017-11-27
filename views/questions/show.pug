@@ -22,7 +22,8 @@ block content
           .smallText!= question.location_map
           br
           | 위도와 경도
-          .smallText= question.location_latLng
+          .smallText#lat(data-value=question.lat)= question.lat 
+          .smallText#lng(data-value=question.lng)= question.lng
           br
           | Event Topic
           .smallText= question.topic
@@ -62,7 +63,7 @@ block content
           script.
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                 mapOption = { 
-                    center: new daum.maps.LatLng(37.5777249,126.9258444), // 지도의 중심좌표 $('#question.location_latLng')
+                    center: new daum.maps.LatLng( $('#lat').data('value'), $('#lng').data('value')), // 지도의 중심좌표
                     level: 3 // 지도의 확대 레벨
                 };
 

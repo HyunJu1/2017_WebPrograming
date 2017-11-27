@@ -53,40 +53,38 @@ router.get('/:id/favorite', needAuth, (req, res, next) => {
       user.favorite.push(question._id);
       user.save(function(err) {
         req.flash('success', 'Successfully Add My Favorite');
-        //console.log(user.favorite);
         res.redirect('back');
       });
     });
   });
 });
 
-
 router.get('/:id/participate', needAuth, (req, res, next) => {
   const question = Question.findById(req.params.id, function(err, question) {
     if(!question.participantLimit){
       question.participantN++;
       question.participantL.push(req.user.id);
-      question.save(function(err) {
-        if (err) {
-          return next(err);
-        } else {
-          req.flash('success', 'Successfully Registered');
-          res.render('questions/participant_survey', {question: question});
-        }
-      });
-    }
+      question.save();
+      if (question.participantN>3) {
+        question.recommend.push(question._id);
+        question.save();
+        console.log('question.recommend',question.recommend);
+      }
+      req.flash('success', 'Successfully Registered');
+      res.render('questions/participant_survey', {question: question});
+      }
     else {
       if(question.participantN < question.participantLimit){
         question.participantN++;
         question.participantL.push(req.user.id);
-        question.save(function(err) {
-          if (err) {
-            return next(err);
-          } else {
-            req.flash('success', 'Successfully Registered');
-            res.render('questions/participant_survey', {question: question});
-          }
-        });
+        question.save();
+        if (question.participantN>3) {
+          question.recommend.push(recommend._id);
+          question.save();
+          console.log(question.recommend);
+        }
+        req.flash('success', 'Successfully Registered');
+        res.render('questions/participant_survey', {question: question});
       }
       else {
         req.flash('danger', 'Sorry, The Event Participate is full');
@@ -149,6 +147,8 @@ router.post('/:id', catchErrors(async (req, res, next) => {
   question.endTime=req.body.endTime;
   question.location_latLng=req.body.location_latLng;
   question.editor=req.body.editor;
+  question.lat=req.body.lat;
+  question.lng=req.body.lng;
   question.location_map=req.body.location_map;
   question.startTime=req.body.startTime;
   question.participantLimit=req.body.participantLimit;
@@ -178,6 +178,8 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     editor: req.body.editor,
     location_map: req.body.location_map,
     location_latLng: req.body.location_latLng,
+    lat: req.body.lat,
+    lng: req.body.lng,
     participantLimit: req.body.participantLimit,
     location: req.body.location,
     topic: req.body.topic,
