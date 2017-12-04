@@ -38,22 +38,24 @@ block content
             input.form-control.mr-sm-2(type='text', name='term', placeholder='City or Location', aria-label='Search', value=term)
 
           .SearchBar-component
-            select#date-range.custom-select(name="date")
-              option(selected="") All Dates
-              option(value="today") Today
-              option(value="tomorrow") Tomorrow
-              option(value="this_week") This Week
-              option(value="this_weekend") This Weekend
-              option(value="next_week") Next Week
-              option(value="next_month") Next Month
+            .s
+              select#date-range.custom-select(name="date")
+                option(selected="") All Dates
+                option(value="today") Today
+                option(value="tomorrow") Tomorrow
+                option(value="this_week") This Week
+                option(value="this_weekend") This Weekend
+                option(value="next_week") Next Week
+                option(value="next_month") Next Month
           .SearchBar-component
-            button.btn.btn-light(type="button") SEARCH
-  
-      .rr
+            .ss
+              button.btn.btn-light(type="button") SEARCH
+
+    .rr
       form.form-inline.search-input-group(action='/questions', method='GET')
         i.fa.fa-search
           input.form-control.mr-sm-2(type='text', name='term', placeholder='Search', aria-label='Search', value=term)
-          
+
     |     
     h5 Popular Events in Seoul, Republic of Korea
     

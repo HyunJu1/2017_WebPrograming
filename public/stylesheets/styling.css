@@ -118,10 +118,13 @@ col-lg-4.col-sm-6.portfolio-item{
   .button{
     width:40%;
   }
-  .search-card .SearchBar .SearchBar-component .custom-select {
+  .search-card .SearchBar .SearchBar-component .ss{
+    font-size: 0.5em;
+    width: 10em;
   }
   .search-card .SearchBar button {
     margin-left: 2em;
+    width:100%;
   }
 img{
   padding-top:
@@ -170,6 +173,9 @@ margin-left: 14em;
   }
 }
 @media (max-width: 570px) {
+  .rr{
+    padding:0;
+  }
 .carousel.slide{
   display:none;
   margin-top: 0px;
@@ -382,7 +388,7 @@ html{
   color: white;
   font-weight: 600;
   box-sizing: border-box;
-  width: 70%;
+  width: 10em;
 }
 .content{
    flex: 1 0 auto;
