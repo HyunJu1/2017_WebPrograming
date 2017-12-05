@@ -1,16 +1,16 @@
 $(function() {
-  $('.question-like-btn').click(function(e) {
+  $('.event-like-btn').click(function(e) {
     console.log('im here');
     var $el = $(e.currentTarget);
     if ($el.hasClass('loading')) return;
     $el.addClass('loading');
     $.ajax({
-      url: '/api/questions/' + $el.data('id') + '/like',
+      url: '/api/events/' + $el.data('id') + '/like',
       method: 'POST',
       dataType: 'json',
       success: function(data) {
-        $('.question .num-likes').text(data.numLikes);
-        $('.question-like-btn').hide();
+        $('.event .num-likes').text(data.numLikes);
+        $('.event-like-btn').hide();
       },
       error: function(data, status) {
         if (data.status == 401) {

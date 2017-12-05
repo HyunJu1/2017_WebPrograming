@@ -8,7 +8,7 @@ var schema = new Schema({
   password: {type: String},
   facebook: {id: String, token: String, photo: String},
   kakaotalk: {id: String, token: String, photo: String},
-  favorite: [{type: Schema.Types.ObjectId, ref: 'Question'}],
+  favorite: [{type: Schema.Types.ObjectId, ref: 'Event'}],
   createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},

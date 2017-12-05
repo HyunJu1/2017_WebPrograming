@@ -1,19 +1,19 @@
 .form-group
   label(for="title") Title
-  input.form-control(type="text", name="title", placeholder="이벤트의 제목을 입력하시오(필수)", value=question.title)
+  input.form-control(type="text", name="title", placeholder="이벤트의 제목을 입력하시오(필수)", value=event.title)
 .form-group
-  label(for="question") Content
-  textarea.form-control(name="content", rows="5",placeholder="이벤트의 상세내용을 입력하시오(필수)")= question.content
+  label(for="event") Content
+  textarea.form-control(name="content", rows="5",placeholder="이벤트의 상세내용을 입력하시오(필수)")= event.content
 
 .form-group
     label(for='editor') Event Description
-      textarea(name='editor')= question.editor
+      textarea(name='editor')= event.editor
       script.
         CKEDITOR.replace('editor');
 
 .form-group
   label(for="location") Location
-  input.form-control(type="text", name="location", placeholder="이벤트 위치를 입력하시오(필수)", value=question.location)
+  input.form-control(type="text", name="location", placeholder="이벤트 위치를 입력하시오(필수)", value=event.location)
 
 
 .form-group
@@ -26,10 +26,10 @@
     #map(style='width:100%;height:100%;position:relative;overflow:hidden;')
     |     
   .hAddr  
-    input.form-control(type="text", id="location_map",name="location_map", value=question.location_map)
+    input.form-control(type="text", id="location_map",name="location_map", value=event.location_map)
   .hAddr    
-    input.form-control(type="hidden", id="lat",name="lat", value=question.lat)        
-    input.form-control(type="hidden", id="lng",name="lng", value=question.lng)        
+    input.form-control(type="hidden", id="lat",name="lat", value=event.lat)        
+    input.form-control(type="hidden", id="lng",name="lng", value=event.lng)        
     span#centerAddr
       script(type='text/javascript', src='//dapi.kakao.com/v2/maps/sdk.js?appkey=7bd9912d6b7fb647f736ab86b4da94d5&libraries=services')
       script.
@@ -98,7 +98,7 @@
       
 .form-group
   label(for="topic") Event Topic &nbsp;
-  select.form-control(name="topic")= question.topic
+  select.form-control(name="topic")= event.topic
     option(value="Music") Music
     option(value="Food and Drink") Food and Drink
     option(value="Class") Class
@@ -109,7 +109,7 @@
 
 .form-group
   label(for="eventType") Event Type &nbsp;
-  select.form-control(name="eventType")= question.eventType
+  select.form-control(name="eventType")= event.eventType
     option(value="Health & Wellness") Health and Wellness
     option(value="Performing & Visual Arts") Performing and Visual Arts
     option(value="Goverment & Politics") Goverment and Politics
@@ -120,29 +120,29 @@
 
 .form-group
   label(for="startTime") Start Time
-  input.form-control(type="datetime-local", name="startTime", value=question.startTime)
+  input.form-control(type="datetime-local", name="startTime", value=event.startTime)
 .form-group
   label(for="endTime") End Time
-  input.form-control(type="datetime-local", name="endTime", value=question.endTime)
+  input.form-control(type="datetime-local", name="endTime", value=event.endTime)
 .form-group
   label(for="RegisOrgan") 등록 조직
-  input.form-control(type="text", name="RegisOrgan", placeholder="이벤트 등록 조직의 이름을 입력하시오(선택)", value=question.RegisOrgan)
+  input.form-control(type="text", name="RegisOrgan", placeholder="이벤트 등록 조직의 이름을 입력하시오(선택)", value=event.RegisOrgan)
 .form-group
   label(for="RegisOrganCon") 등록 조직 설명
-  textarea.form-control(name="RegisOrganCon", rows="3",placeholder="이벤트 등록 조직이 상세내용을 입력하시오(선택)")= question.RegisOrganCon
+  textarea.form-control(name="RegisOrganCon", rows="3",placeholder="이벤트 등록 조직이 상세내용을 입력하시오(선택)")= event.RegisOrganCon
 .form-group
   label(for="price") 티켓 가격
     input(type="radio", name="ticket", value="free", checked="")
     |	free&nbsp;
     input(type="radio", name="ticket", value="nofree")
     |	paid
-    input.form-control(type="text", placeholder="가격을 입력하시오", id="price",name="price", value=question.price)
+    input.form-control(type="text", placeholder="가격을 입력하시오", id="price",name="price", value=event.price)
 .form-group
   label(for="participantLimit") 참여자 제한 인원수
-  input.form-control(type="text", name="participantLimit", placeholder="(선택사항)", value=question.participateLimit)
+  input.form-control(type="text", name="participantLimit", placeholder="(선택사항)", value=event.participateLimit)
 .form-group
   label(for="tags") Tags
-  input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=question.tags ? question.tags.join(" ") : "")
+  input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=event.tags ? event.tags.join(" ") : "")
 script.
   $(function() {
   	$('#price').hide();

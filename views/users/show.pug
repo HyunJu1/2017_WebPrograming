@@ -37,25 +37,25 @@ block content
           th
           th
       tbody
-        each question in questions
+        each event in events
           tr
             td 
-              a(href=`/questions/${question._id}`)= question.title
-              td= question.location
-              td= question.startTime
-              td= question.participantN
+              a(href=`/events/${event._id}`)= event.title
+              td= event.location
+              td= event.startTime
+              td= event.participantN
               td
-                a.btn.btn-sm.btn-outline-secondary(href=`/questions/${question._id}/edit`) 
+                a.btn.btn-sm.btn-outline-secondary(href=`/events/${event._id}/edit`) 
                   | #[i.fa.fa-pencil] Edit
                 | 
-                a.btn.btn-sm.btn-outline-danger(href=`/questions/${question._id}?_method=DELETE`)
+                a.btn.btn-sm.btn-outline-danger(href=`/events/${event._id}?_method=DELETE`)
                   | #[i.fa.fa-trash] Delete
                 |
                 |
-                a.btn.btn-sm.btn-outline-dark(href=`/questions/${question.id}/participantL`) Participate Lists
+                a.btn.btn-sm.btn-outline-dark(href=`/events/${event.id}/participantL`) Participate Lists
                 |
                 |
-                a.btn.btn-sm.btn-outline-dark(href=`/questions/${question.id}/survey`) Survey Result
+                a.btn.btn-sm.btn-outline-dark(href=`/events/${event.id}/survey`) Survey Result
     br
     hr
     br
@@ -74,7 +74,7 @@ block content
         each favorite in favorites
           tr
             td 
-              a(href=`/questions/${favorite._id}`)= favorite.title
+              a(href=`/events/${favorite._id}`)= favorite.title
               td= favorite.location
               td= favorite.startTime
               td= favorite.RegisOrgan
@@ -99,7 +99,7 @@ block content
         each recommend in recommends
           tr
             td 
-              a(href=`/questions/${recommend._id}`)= recommend.title
+              a(href=`/events/${recommend._id}`)= recommend.title
               td= recommend.location
               td= recommend.startTime
               td= recommend.RegisOrgan

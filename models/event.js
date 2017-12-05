@@ -5,10 +5,10 @@ var mongoose = require('mongoose'),
 var schema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   title: {type: String, trim: true, required: true},
-  content: {type: String, trim: true, required: true},
+  content: {type: String, trim: true, required: false},
   editor: {type: String, trim: true, required: false},
   image: { data: Buffer, contentType: String },
-  location: {type: String, trim: true, required: true},
+  location: {type: String, trim: true, required: false},
   location_map: {type: String, trim: true, required: false},
   // location_latLng:  {type: String, trim: true, required: false},
   lat: {type: String },
@@ -22,7 +22,7 @@ var schema = new Schema({
   price: {type: Number, trim: true, required: false},
   participantN: {type: Number, required:false, default:0},
   participantL: [{type: Schema.Types.ObjectId, ref: 'User'}],
-  recommend: [{type: Schema.Types.ObjectId, ref: 'Question'}],
+  recommend: [{type: Schema.Types.ObjectId, ref: 'Event'}],
   participantLimit: {type: Number, required:false},
   tags: [String],
   numLikes: {type: Number, default: 0},
@@ -34,6 +34,6 @@ var schema = new Schema({
   toObject: {virtuals: true}
 });
 schema.plugin(mongoosePaginate);
-var Question = mongoose.model('Question', schema);
+var Event = mongoose.model('Event', schema);
 
-module.exports = Question;
+module.exports = Event;

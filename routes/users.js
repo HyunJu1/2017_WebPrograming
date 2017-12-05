@@ -1,6 +1,6 @@
 const express = require('express');
 const User = require('../models/user');
-const Question = require('../models/question');
+const Event = require('../models/event');
 const router = express.Router();
 const catchErrors = require('../lib/async-error');
 
@@ -82,24 +82,24 @@ router.put('/:id', needAuth, catchErrors(async (req, res, next) => {
   }
   await user.save();
   req.flash('success', 'Updated successfully.');
-  res.redirect('/users');
+  res.redirect('/');
 }));
 
 router.delete('/:id', needAuth,catchErrors(async (req, res, next) => {
   const user = await User.findOneAndRemove({_id: req.params.id});
   req.flash('success', 'Deleted Successfully.');
-  res.redirect('/users');
+  res.redirect('/');
 }));
 
 
 router.get('/:id', (req, res, next) => {
 
   var users= User.findById(req.params.id, function(err, users) {
-    var question = Question.find({}, function(err, question) {
-      var recommends = Question.find({_id: question.recommend}, function(err, recommends) {
-        var questions = Question.find({author: users.id}, function(err, questions) {
-          var favorites = Question.find({_id: users.favorite}, function(err, favorites) {
-            res.render('users/show', {users: users, questions: questions, favorites: favorites, recommends: recommends
+    var event = Event.find({}, function(err, event) {
+      var recommends = Event.find({_id: event.recommend}, function(err, recommends) {
+        var events = Event.find({author: users.id}, function(err, events) {
+          var favorites = Event.find({_id: users.favorite}, function(err, favorites) {
+            res.render('users/show', {users: users, events: events, favorites: favorites, recommends: recommends
             });
           });
         });

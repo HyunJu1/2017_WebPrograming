@@ -1,11 +1,15 @@
 body {
   padding-top: 25px;
-  display: flex;
+  /*display: flex;*/
   display: -webkit-flex;
   flex-direction: column;
   -webkit-flex-direction: column;
 }
-.question-like-btn, .answer-like-btn {
+.container{
+  padding-left: 0;
+  padding-right: 0;
+}
+.event-like-btn, .answer-like-btn {
   .for-loading {display: none;}
   cursor: pointer;
   &.loading {
@@ -19,18 +23,18 @@ body {
     cursor: default;
   }
 }
-.question-like-btn, .answer-like-btn {
+.event-like-btn, .answer-like-btn {
   cursor: pointer; }
-  .question-like-btn .for-loading, .answer-like-btn .for-loading {
+  .event-like-btn .for-loading, .answer-like-btn .for-loading {
     display: none; }
-  .question-like-btn.loading, .answer-like-btn.loading {
+  .event-like-btn.loading, .answer-like-btn.loading {
     filter: opacity(30%);
     cursor: wait; }
-    .question-like-btn.loading > span, .answer-like-btn.loading > span {
+    .event-like-btn.loading > span, .answer-like-btn.loading > span {
       display: none; }
-    .question-like-btn.loading .for-loading, .answer-like-btn.loading .for-loading {
+    .event-like-btn.loading .for-loading, .answer-like-btn.loading .for-loading {
       display: inline-block; }
-  .question-like-btn.disabled, .answer-like-btn.disabled {
+  .event-like-btn.disabled, .answer-like-btn.disabled {
     color: #bbb;
     cursor: default; }
 .carousel-item.active > img{
@@ -79,7 +83,7 @@ margin-left: 30em;
   text-decoration: none;
 text-align: left;
 }
-.questions{
+.events{
   font-size:0.35em;
   width:100%;
 }
@@ -171,11 +175,18 @@ margin-left: 14em;
     font-size: 0.8em;
     text-align: center;
   }
+  .rr{
+    padding:0;
+    margin:0;
+
+}
 }
 @media (max-width: 570px) {
   .rr{
     padding:0;
-  }
+    margin:0;
+
+}
 .carousel.slide{
   display:none;
   margin-top: 0px;

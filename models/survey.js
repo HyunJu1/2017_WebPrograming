@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 var schema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User'},
-  question: { type: Schema.Types.ObjectId, ref: 'Question'},
+  event: { type: Schema.Types.ObjectId, ref: 'Event'},
   survey_sosok: {type: String, trim: true},
   survey_reason: {type: String, trim: true}
 }, {

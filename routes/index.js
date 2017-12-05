@@ -1,7 +1,7 @@
 var cool = require('cool-ascii-faces');
 var express = require('express'),
   User = require('../models/user');
-const Question = require('../models/question');
+const Event = require('../models/event');
 const Survey = require('../models/survey');
 const catchErrors = require('../lib/async-error');
 const router = express.Router();
@@ -33,13 +33,13 @@ router.get('/', catchErrors(async (req, res, next) => {  //await를 사용하기
       {tags: {'$regex': term, '$options': 'i'}}
     ]};
   }
-  const questions = await Question.paginate(query, {   //여기서 await.
+  const events = await Event.paginate(query, {   //여기서 await.
     sort: {createdAt: -1},
     populate: 'author',
     page: page, limit: limit
   });
-  //console.log(questions)
-  res.render('index', {questions: questions, term: term});
+  //console.log(events)
+  res.render('index', {events: events, term: term});
 }));
 
 /* GET home page. */

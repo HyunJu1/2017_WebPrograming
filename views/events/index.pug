@@ -4,39 +4,39 @@ include ../includes/_paginate
 
 block content
   .container  
-    form.form-inline.search-input-group(action='/questions', method='GET')
+    form.form-inline.search-input-group(action='/events', method='GET')
       input.form-control.mr-sm-2(type='text', name='term',placeholder='Search', aria-label='Search', value=term)
       i.fa.fa-search
 
     h1.main-title 
       | Events  
       
-      if questions.total <= 0 
+      if events.total <= 0 
         .alert.alert-info No Events Available Yet
       else
         |
         .card-body
-          .questions
-            each question in questions.docs
-              .question                
+          .events
+            each event in events.docs
+              .event                
                 .row
                   .col-sm-3
-                    a(href=`/questions/${question.id}`)
+                    a(href=`/events/${event.id}`)
                       img.card-img-top(src='images/taxi-cab-381233_1920.jpg', alt='')
                     |                 
                   .col-sm-7
                       p.card-text
-                        .small= question.startTime
+                        .small= event.startTime
                       br                     
                       h6.card-title
-                        a.title(href=`/questions/${question.id}`)= question.title
+                        a.title(href=`/events/${event.id}`)= event.title
                       br
                       p.card-text
-                        .small= question.location  
+                        .small= event.location  
                       include _question
                       
           p.card-textt
-            +paginate(questions, '/questions', {query: "???XXX&&"})  
-      a.btn.btn-primary(href='/questions/new') Create Events
+            +paginate(events, '/events', {query: "???XXX&&"})  
+      a.btn.btn-primary(href='/events/new') Create Events
                    
       

@@ -4,55 +4,55 @@ block content
   .container
 
 
-    h1.main-title= question.title
+    h1.main-title= event.title
 
-    .question.show
+    .event.show
       .row
         .col-sm-6
           | Description
-          .content= question.content
+          .content= event.content
           br
           | Editor Description
-          .smallText!= question.editor
+          .smallText!= event.editor
         .col-sm-4  
           | Location
-          .smallText= question.location
+          .smallText= event.location
           br
           | Location_Map
-          .smallText!= question.location_map
+          .smallText!= event.location_map
           br
           | 위도와 경도
-          .smallText#lat(data-value=question.lat)= question.lat 
-          .smallText#lng(data-value=question.lng)= question.lng
+          .smallText#lat(data-value=event.lat)= event.lat 
+          .smallText#lng(data-value=event.lng)= event.lng
           br
           | Event Topic
-          .smallText= question.topic
+          .smallText= event.topic
           br
           | Event Type
-          .smallText= question.eventType
+          .smallText= event.eventType
           br
           | Date and Time 
-          .smallText= question.startTime 
+          .smallText= event.startTime 
           | ~
-          .smallText=question.endTime
+          .smallText=event.endTime
           br
           | Price:
           br
-          if (!question.price==null) 
-            .smallText=question.price
+          if (!event.price==null) 
+            .smallText=event.price
           else 
             | Free
           
           br
           br
           | Organizer :
-          .smallText=question.RegisOrgan
+          .smallText=event.RegisOrgan
           br
           | Organizer Description :
-          .smallText=question.RegisOrganCon
+          .smallText=event.RegisOrganCon
           br
           | participants :
-          .smallText= question.participantN
+          .smallText= event.participantN
           
       .map_wrap
         #map(style='width:100%;height:100%;position:relative;overflow:hidden;')
@@ -84,37 +84,37 @@ block content
 
       .buttons
         if currentUser
-          button.btn.btn-primary.question-like-btn(data-id=question.id) 
+          button.btn.btn-primary.event-like-btn(data-id=event.id) 
             span.for-loading #[i.fa.fa-spin.fa-refresh] Loading
             span #[i.fa.fa-thumbs-up] Like
         |
         |
-        a.btn.btn-outline-dark(href=`/questions/${question._id}/participate`) Participate
+        a.btn.btn-outline-dark(href=`/events/${event._id}/participate`) Participate
         |
         |
-        a.btn.btn-outline-dark(href=`/questions/${question._id}/favorite`) Add Favorite
+        a.btn.btn-outline-dark(href=`/events/${event._id}/favorite`) Add Favorite
         br
         br
         
-        if currentUser && question.author.id == currentUser.id  
+        if currentUser && event.author.id == currentUser.id  
           | 
-          a.btn.btn-outline-secondary(href=`/questions/${question.id}/edit`) Edit
+          a.btn.btn-outline-secondary(href=`/events/${event.id}/edit`) Edit
           | 
-          a.btn.btn-outline-danger.delete-btn(href="#", data-url=`/questions/${question.id}?_method=delete`) Delete
+          a.btn.btn-outline-danger.delete-btn(href="#", data-url=`/events/${event.id}?_method=delete`) Delete
           |
           |
-          a.btn.btn-outline-dark(href=`/questions/${question.id}/participantL`) Participate Lists
+          a.btn.btn-outline-dark(href=`/events/${event.id}/participantL`) Participate Lists
           |
           |
-          a.btn.btn-outline-dark(href=`/questions/${question.id}/survey`) Participant Survey Result
-    if question.numAnswers > 0
+          a.btn.btn-outline-dark(href=`/events/${event.id}/survey`) Participant Survey Result
+    if event.numAnswers > 0
       hr
-      h3 #{question.numAnswers} Answer(s)
+      h3 #{event.numAnswers} Answer(s)
       .answers.show
         each answer in answers
           include _answer
 
-    form(action=`/questions/${question.id}/answers`, method='POST')
+    form(action=`/events/${event.id}/answers`, method='POST')
       .form-group
         label(for='answer') Your Answer
         textarea.form-control(name="content", rows="5")
