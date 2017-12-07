@@ -187,124 +187,124 @@ block content
     br
     |     
     h3.browse Browse by Top Categories
-    each event in events.docs
-      |     
-      .container-fluid
-        .row
-          .col-md-8
+
+    |     
+    .container-fluid
+      .row
+        .col-md-8
+          .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
+            a(href='events?term=Music')
+              .img(style='height:100%')
+                img(src='./images/music.JPG', alt='img', style='height:100%')
+              |                         
+              .text
+                h4 Music
+              |                         
+              .info
+                h3 Music
+                |                             
+                p Intimate house concerts, major music festivals, and the occational dance party
+        |             
+        .col-md-4
+          .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
+            a(href='events?term=Food')
+              .img(style='height:100%')
+                img(src='./images/food.JPG', alt='img', style='height:100%')
+              |                         
+              .text
+                h3 Food &amp; Drink 
+              |                         
+              .info
+                h3 Food &amp; Drink 
+                |                             
+                p  Dinner parties, tastings, and big-time festivals
+
+      |         
+      .row
+        .col-md-4
+          .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
+            a(href='events?term=Class')
+              .img(style='height:100%')
+                img(src='./images/PARTY.JPG', alt='img', style='height:100%')
+              |                         
+              .text
+                h3 &nbsp;&nbsp;&nbsp;&nbsp;Class  
+              |                         
+              .info
+                h3 Class
+                |                             
+                p Enlightening seminars, technical workshops, and fitness classes
+
+        |             
+        .col-md-4
+          .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
+            a(href='events?term=Arts')
+              .img(style='height:100%')
+                img(src='./images/arts.JPG', alt='img', style='height:100%')
+              |                         
+              .text
+                h3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arts
+              |                         
+              .info
+                h3 Arts
+                |                             
+                p    Plays, comedy nights, art exhibitions and film festivals
+
+        |             
+        .col-md-4
+          .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
+            a(href='events?term=Party')
+              .img(style='height:100%')
+                img(src='./images/partys.jpg', alt='img', style='height:100%')
+              |                         
+              .text
+                h3 &nbsp;&nbsp;&nbsp;Parties
+              |                         
+              .info
+                h3 Parties
+                |                             
+                p  Casual happy hours, singles nights, and all-night celebrations
+
+      |         
+      .row
+        .col-md-4
+          // normal
+          .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
+            a(href=`events?term=Sports`)
+              .img(style='height:100%')
+                img(src='./images/sport.JPG', alt='img', style='height:100%')
+              |                         
+              .text
+                h3  Sports and Wellness
+
+              |                         
+              .info
+                h3  Sports and Wellness
+
+                |                             
+                p Obstacle races, drop-in yoga classes, and the big game
+
+
+        |             
+        .col-md-8
+          a(href='events?term=networking`')
             .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
-              a(href='events?term=Music')
+              a(href=`events?term=networking`)
                 .img(style='height:100%')
-                  img(src='./images/music.JPG', alt='img', style='height:100%')
-                |                         
+                  img(src='./images/network.JPG', alt='img', style='height:100%')
+                |                             
                 .text
-                  h4 Music
-                |                         
+                  h3 Networking
+
+                |                             
                 .info
-                  h3 Music
-                  |                             
-                  p Intimate house concerts, major music festivals, and the occational dance party
-          |             
-          .col-md-4
-            .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
-              a(href='events?term=Food')
-                .img(style='height:100%')
-                  img(src='./images/food.JPG', alt='img', style='height:100%')
-                |                         
-                .text
-                  h3 Food &amp; Drink 
-                |                         
-                .info
-                  h3 Food &amp; Drink 
-                  |                             
-                  p  Dinner parties, tastings, and big-time festivals
+                  h3 Networrking
 
-        |         
-        .row
-          .col-md-4
-            .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
-              a(href='events?term=Class')
-                .img(style='height:100%')
-                  img(src='./images/PARTY.JPG', alt='img', style='height:100%')
-                |                         
-                .text
-                  h3 &nbsp;&nbsp;&nbsp;&nbsp;Class  
-                |                         
-                .info
-                  h3 Class
-                  |                             
-                  p Enlightening seminars, technical workshops, and fitness classes
-
-          |             
-          .col-md-4
-            .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
-              a(href='events?term=Arts')
-                .img(style='height:100%')
-                  img(src='./images/arts.JPG', alt='img', style='height:100%')
-                |                         
-                .text
-                  h3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arts
-                |                         
-                .info
-                  h3 Arts
-                  |                             
-                  p    Plays, comedy nights, art exhibitions and film festivals
-
-          |             
-          .col-md-4
-            .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
-              a(href='events?term=Party')
-                .img(style='height:100%')
-                  img(src='./images/partys.jpg', alt='img', style='height:100%')
-                |                         
-                .text
-                  h3 &nbsp;&nbsp;&nbsp;Parties
-                |                         
-                .info
-                  h3 Parties
-                  |                             
-                  p  Casual happy hours, singles nights, and all-night celebrations
-
-        |         
-        .row
-          .col-md-4
-            // normal
-            .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
-              a(href=`events?term=Sports`)
-                .img(style='height:100%')
-                  img(src='./images/sport.JPG', alt='img', style='height:100%')
-                |                         
-                .text
-                  h3  Sports and Wellness
-
-                |                         
-                .info
-                  h3  Sports and Wellness
-
-                  |                             
-                  p Obstacle races, drop-in yoga classes, and the big game
-
-
-          |             
-          .col-md-8
-            a(href='events?term=networking`')
-              .ih-item.square.effect6.from_top_and_bottom(style='height:100%')
-                a(href=`events?term=networking`)
-                  .img(style='height:100%')
-                    img(src='./images/network.JPG', alt='img', style='height:100%')
-                  |                             
-                  .text
-                    h3 Networking
-
-                  |                             
-                  .info
-                    h3 Networrking
-
-                    |                                 
-                    p Business mixers, hobby meetups, and panel discussions
-        
-        br
-        br
-        br
-        br  
-        br    
+                  |                                 
+                  p Business mixers, hobby meetups, and panel discussions
+      
+      br
+      br
+      br
+      br  
+      br    
