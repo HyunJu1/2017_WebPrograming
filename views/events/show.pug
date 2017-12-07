@@ -38,10 +38,10 @@ block content
           br
           | Price:
           br
-          if (!event.price==null) 
-            .smallText=event.price
+          if (event.price==null) 
+            |Free
           else 
-            | Free
+            .smallText=event.price
           
           br
           br
@@ -53,6 +53,10 @@ block content
           br
           | participants :
           .smallText= event.participantN
+          br
+          | max paticipants number :
+          .smallText= event.participantLimit
+          
           
       .map_wrap
         #map(style='width:100%;height:100%;position:relative;overflow:hidden;')

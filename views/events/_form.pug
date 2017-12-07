@@ -148,11 +148,9 @@ script.
   	$('#price').hide();
   	$("input[name='ticket']:radio").change(function() {
   		var serviceType = this.value;
-
   		if (serviceType == "free") {
   			$('#price').hide();
   		}
-
   		if (serviceType == "nofree") {
   			$('#price').show();
   		}
