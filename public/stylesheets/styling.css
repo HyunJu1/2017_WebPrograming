@@ -5,6 +5,9 @@ body {
   flex-direction: column;
   -webkit-flex-direction: column;
 }
+.rr{
+  margin-top: 3em;
+}
 .container{
   padding-left: 0;
   padding-right: 0;
@@ -136,6 +139,9 @@ col-lg-4.col-sm-6.portfolio-item{
     font-size: 0.5em;
     width: 10em;
   }
+  .rr{
+    margin-top: 0;
+  }
   .search-card .SearchBar button {
     margin-left: 2em;
     width:100%;
@@ -190,11 +196,7 @@ margin-left: 14em;
     font-size: 0.8em;
     text-align: center;
   }
-  .rr{
-    padding:0;
-    margin:0;
 
-}
 body{
   padding: auto;
   margin: auto;
@@ -212,11 +214,7 @@ header{
 }
 }
 @media (max-width: 570px) {
-  .rr{
-    padding:0;
-    margin:0;
 
-}
 th{
       display: none;
 }
