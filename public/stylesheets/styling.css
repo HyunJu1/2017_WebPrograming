@@ -82,10 +82,13 @@ margin-left: 30em;
   text-align: left;
   color: #81bbf2; }
 .card-text{
-  font-size: 0.5em;
+  font-size: 0.7em;
   text-align: left;
   text-decoration: none;
 text-align: left;
+}
+.h6, h6{
+  font-size: 0.9em;
 }
 .events{
   font-size:0.35em;
@@ -184,6 +187,7 @@ margin-left: 14em;
     margin:0;
 
 }
+
 }
 @media (max-width: 570px) {
   .rr{
@@ -500,5 +504,5 @@ html{
   text-align: center;
 }
 .card-title a{
-  color:#000000;
+  color:chocolate;
 }
