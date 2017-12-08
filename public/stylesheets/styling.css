@@ -12,6 +12,9 @@ body {
 .button{
   margin: auto;
 }
+.rr{
+  width: 100%;
+}
 .event-like-btn, .answer-like-btn {
   .for-loading {display: none;}
   cursor: pointer;
@@ -175,6 +178,11 @@ margin-left: 14em;
   .button .btn btn-lg btn-secondary btn-block{
     width:30%;
   }
+  table{
+    overflow:"auto";
+  }
+
+
 .header.clearfix{
     width: 20%;
   }
@@ -187,7 +195,21 @@ margin-left: 14em;
     margin:0;
 
 }
+body{
+  padding: auto;
+  margin: auto;
+}
+content{
+  padding: auto;
+  margin: auto;  margin-left: 1em;
+}
+header{
+   margin-left: 1em;
+}
+.container{
 
+  padding: 1em;
+}
 }
 @media (max-width: 570px) {
   .rr{
@@ -195,12 +217,32 @@ margin-left: 14em;
     margin:0;
 
 }
+th{
+      display: none;
+}
+td{
+  display: list-item;
+  list-style: none;
+}
+table{
+  overflow:"auto";
+}
+
+body{
+padding: auto;
+margin: auto;
+}
+content{
+  padding: auto;
+  margin: auto;
+  margin-left: 1em;
+}
 .carousel.slide{
   display:none;
   margin-top: 0px;
 }
 .button_loc{
-margin-left: 10em;
+margin:auto;
 width: 100%;
 }
 .button{
@@ -250,6 +292,7 @@ img{
 .navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top{
   background-color: white;
 }
+
 #myFooter {
     background-color: #2d313c;
     color: white;
@@ -366,10 +409,19 @@ img{
     #myFooter .info{
         text-align: center;
     }
-}
+    .ss button{
+      margin: auto;
+    }
+    .button_loc{
+    margin:auto;
+    width: 100%;
+    }
 html{
     height: 100%;
+    width: 100%;
 }
+}
+
 .search-card {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   width: 90%;
@@ -505,4 +557,8 @@ html{
 }
 .card-title a{
   color:chocolate;
+}
+html{
+    height: 100%;
+    width: 100%;
 }
