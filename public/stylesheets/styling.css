@@ -5,7 +5,10 @@ body {
   flex-direction: column;
   -webkit-flex-direction: column;
 }
-.rr{
+/*.rr{
+  margin-top: 3em;
+}*/
+.form-inline.search-input-group{
   margin-top: 3em;
 }
 .container{
@@ -205,9 +208,7 @@ content{
   padding: auto;
   margin: auto;  margin-left: 1em;
 }
-header{
-   margin-left: 1em;
-}
+
 .container{
 
   padding: 1em;
