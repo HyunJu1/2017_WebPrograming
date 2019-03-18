@@ -2,15 +2,18 @@
 
 
 ### (1) 웹 사이트 배포 URL :
+```
   https://nameless-reef-13173.herokuapp.com/
-  •	Heroku와 Mongolab을 이용
-
+  Heroku와 Mongolab을 이용
+```
 ### (2) 사용 언어 :
+```
   * Front-End  - Pug + css(Bootstrap4) + jQuery + Ajax + WebSocket
   * Server - Node.js[Express.js]
   * DataBase - MongoDB
-
+```
 ### (3) 구현 완료 기능  :
+```
   1. 사용자
     •	사용자는 본인이 이벤트를 생성할 수도 있고, 참가할 수도 있다.
     •	회원가입, 로그인
@@ -50,3 +53,4 @@
     •	(Option) Favorite 기능: 이벤트를 Favorite에 추가. 자신의 Favorite 목록 확인 가능
     •	(Option) Responsive Design
     •	(Option) Ajax 기술, 혹은 WebSocket 기술을 활용하면 가산점 부여
+```
